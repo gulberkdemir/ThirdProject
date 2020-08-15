@@ -1,7 +1,7 @@
 # ThirdProject
 Packages: Robotframework 3.2.1, Python 3.7, Selenium 3.141
 
-1- First of all you can reach out report from this link. You need to download "log.html" file and open it by using chrome or any browser, thus you can follow up all results accordşng to every each case step by step
+1- First of all you can reach out report from this link. You need to download "log.html" file and open it by using chrome or any browser, thus you can follow up all results according to every each case step by step
 https://github.com/gulberkdemir/ThirdProject/blob/master/Test/log.html
 
 2- Run this command where your project is
