@@ -1,0 +1,2749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.7.2 on win32)" generated="20200815 20:59:25.321" rpa="false">
+<suite id="s1" name="Smoke" source="C:\Python37Projects\ThirdProject\Test\Smoke.robot">
+<test id="s1-t1" name="Search for any location on Magazine by using the search bar">
+<kw name="Begin Web Test" library="Common" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:25.610" level="INFO">Opening browser 'Chrome' to base url 'https://magazine.trivago.com/'.</msg>
+<status status="PASS" starttime="20200815 20:59:25.610" endtime="20200815 20:59:30.198"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200815 20:59:30.199" endtime="20200815 20:59:32.330"></status>
+</kw>
+<kw name="Accept Cookie" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:32.331" endtime="20200815 20:59:32.365"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:32.366" level="INFO">Clicking element 'css= button#onetrust-accept-btn-handler'.</msg>
+<status status="PASS" starttime="20200815 20:59:32.365" endtime="20200815 20:59:32.429"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:32.330" endtime="20200815 20:59:32.429"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:25.610" endtime="20200815 20:59:32.430"></status>
+</kw>
+<kw name="Given User sees the search button in homepage" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${SearchBtn}</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:32.431" endtime="20200815 20:59:32.476"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:32.430" endtime="20200815 20:59:32.477"></status>
+</kw>
+<kw name="And user clicks on search button in homepage" library="Common">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${SearchBtn}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:32.478" level="INFO">Clicking element 'css= #header &gt; div &gt; div &gt; div.search-icon'.</msg>
+<status status="PASS" starttime="20200815 20:59:32.478" endtime="20200815 20:59:32.584"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:32.477" endtime="20200815 20:59:32.584"></status>
+</kw>
+<kw name="When user enters any place name on expanded search area" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${ExpndedSearchInputArea}</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:32.586" endtime="20200815 20:59:32.620"></status>
+</kw>
+<kw name="Custom Input Text And Click Enter" library="SmokeKeywords">
+<arguments>
+<arg>${placeName}</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:32.620" endtime="20200815 20:59:32.716"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:32.585" endtime="20200815 20:59:32.716"></status>
+</kw>
+<kw name="Then search result information is given if results found or not" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${Results}</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:32.717" endtime="20200815 20:59:33.547"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${Results}</arg>
+</arguments>
+<assign>
+<var>${IsElementVisible}</var>
+</assign>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<arguments>
+<arg>${Results}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:33.568" level="INFO">Element 'css= #search &gt; div.container-wide &gt; div.search-results &gt; h3' is displayed.</msg>
+<status status="PASS" starttime="20200815 20:59:33.548" endtime="20200815 20:59:33.568"></status>
+</kw>
+<msg timestamp="20200815 20:59:33.568" level="INFO">${IsElementVisible} = True</msg>
+<status status="PASS" starttime="20200815 20:59:33.547" endtime="20200815 20:59:33.568"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${IsElementVisible}</arg>
+<arg>log to console</arg>
+<arg>RESULTS FOUND</arg>
+<arg>ELSE</arg>
+<arg>log to console</arg>
+<arg>RESULTS NOT FOUND</arg>
+</arguments>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>RESULTS FOUND</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:33.569" endtime="20200815 20:59:33.569"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:33.568" endtime="20200815 20:59:33.569"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:32.717" endtime="20200815 20:59:33.569"></status>
+</kw>
+<kw name="End Web Test" library="Common" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200815 20:59:33.570" endtime="20200815 20:59:35.735"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:33.570" endtime="20200815 20:59:35.736"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:25.609" endtime="20200815 20:59:35.737" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Fill in the contact form and send it">
+<kw name="Begin Web Test" library="Common" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:35.745" level="INFO">Opening browser 'Chrome' to base url 'https://magazine.trivago.com/'.</msg>
+<status status="PASS" starttime="20200815 20:59:35.744" endtime="20200815 20:59:40.231"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200815 20:59:40.231" endtime="20200815 20:59:42.350"></status>
+</kw>
+<kw name="Accept Cookie" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:42.351" endtime="20200815 20:59:42.382"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:42.382" level="INFO">Clicking element 'css= button#onetrust-accept-btn-handler'.</msg>
+<status status="PASS" starttime="20200815 20:59:42.382" endtime="20200815 20:59:42.447"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:42.350" endtime="20200815 20:59:42.447"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:35.743" endtime="20200815 20:59:42.447"></status>
+</kw>
+<kw name="Given the user scrolls down in the home page until end of the page" library="Common">
+<kw name="Scroll Down Please" library="SmokeKeywords">
+<status status="PASS" starttime="20200815 20:59:42.448" endtime="20200815 20:59:52.456"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:42.448" endtime="20200815 20:59:52.457"></status>
+</kw>
+<kw name="And user clicks on the contact button" library="Common">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${ContractLink}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:52.458" level="INFO">Clicking element 'css= #footer-main &gt; div.container-wide &gt; div:nth-child(3) &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; a'.</msg>
+<status status="PASS" starttime="20200815 20:59:52.458" endtime="20200815 20:59:52.562"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:52.458" endtime="20200815 20:59:52.563"></status>
+</kw>
+<kw name="And user types something on message area" library="Common">
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>Selects browser window matching ``locator``.</doc>
+<arguments>
+<arg>NEW</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:52.565" endtime="20200815 20:59:52.577"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${MessageInput}</arg>
+<arg>timeout=10</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:52.578" endtime="20200815 20:59:55.466"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${MessageInput}</arg>
+<arg>TEST</arg>
+</arguments>
+<msg timestamp="20200815 20:59:55.466" level="INFO">Typing text 'TEST' into text field 'css= #app &gt; div.content-wrapper &gt; div &gt; div &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div &gt; textarea'.</msg>
+<status status="PASS" starttime="20200815 20:59:55.466" endtime="20200815 20:59:55.560"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:52.564" endtime="20200815 20:59:55.560"></status>
+</kw>
+<kw name="And user types it's own name to message area" library="Common">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${ContactNameInput}</arg>
+<arg>gulberk demir</arg>
+</arguments>
+<msg timestamp="20200815 20:59:55.562" level="INFO">Typing text 'gulberk demir' into text field 'css= #app &gt; div.content-wrapper &gt; div &gt; div &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) &gt; input'.</msg>
+<status status="PASS" starttime="20200815 20:59:55.562" endtime="20200815 20:59:55.702"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:55.561" endtime="20200815 20:59:55.702"></status>
+</kw>
+<kw name="And user types it's own email to message area" library="Common">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${ContactMailInput}</arg>
+<arg>glbrk08@gmail.com</arg>
+</arguments>
+<msg timestamp="20200815 20:59:55.703" level="INFO">Typing text 'glbrk08@gmail.com' into text field 'css= #contact-email'.</msg>
+<status status="PASS" starttime="20200815 20:59:55.703" endtime="20200815 20:59:55.831"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:55.703" endtime="20200815 20:59:55.831"></status>
+</kw>
+<kw name="And user selects submit checkbox box" library="Common">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3seconds</arg>
+</arguments>
+<msg timestamp="20200815 20:59:58.833" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20200815 20:59:55.832" endtime="20200815 20:59:58.833"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${ContractSubmitCheckbox}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:58.835" level="INFO">Clicking element 'css= #app &gt; div.content-wrapper &gt; div &gt; div &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(3)&gt;input'.</msg>
+<status status="PASS" starttime="20200815 20:59:58.834" endtime="20200815 20:59:58.943"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:55.832" endtime="20200815 20:59:58.943"></status>
+</kw>
+<kw name="when user clicks on submit button" library="Common">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${ContractSubmitButton}</arg>
+</arguments>
+<msg timestamp="20200815 20:59:58.944" level="INFO">Clicking element 'css= #app &gt; div.content-wrapper &gt; div &gt; div &gt; div:nth-child(1) &gt; button'.</msg>
+<status status="PASS" starttime="20200815 20:59:58.944" endtime="20200815 20:59:59.006"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:58.944" endtime="20200815 20:59:59.006"></status>
+</kw>
+<kw name="then message should be sent" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${ContractSuccessMessage}</arg>
+<arg>timeout=10</arg>
+</arguments>
+<status status="PASS" starttime="20200815 20:59:59.007" endtime="20200815 21:00:00.534"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>${ContractSuccessMessage}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20200815 21:00:00.554" level="INFO">${text} = Message Sent Successfully!</msg>
+<status status="PASS" starttime="20200815 21:00:00.534" endtime="20200815 21:00:00.554"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${text}</arg>
+<arg>Message Sent Successfully!</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:00.554" endtime="20200815 21:00:00.555"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:59.007" endtime="20200815 21:00:00.555"></status>
+</kw>
+<kw name="End Web Test" library="Common" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200815 21:00:00.556" endtime="20200815 21:00:02.831"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:00.556" endtime="20200815 21:00:02.831"></status>
+</kw>
+<status status="PASS" starttime="20200815 20:59:35.740" endtime="20200815 21:00:02.833" critical="yes"></status>
+</test>
+<test id="s1-t3" name="Subscribe to the Newsletter">
+<kw name="Begin Web Test" library="Common" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:02.841" level="INFO">Opening browser 'Chrome' to base url 'https://magazine.trivago.com/'.</msg>
+<status status="PASS" starttime="20200815 21:00:02.840" endtime="20200815 21:00:07.297"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200815 21:00:07.297" endtime="20200815 21:00:09.418"></status>
+</kw>
+<kw name="Accept Cookie" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:09.419" endtime="20200815 21:00:09.449"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:09.449" level="INFO">Clicking element 'css= button#onetrust-accept-btn-handler'.</msg>
+<status status="PASS" starttime="20200815 21:00:09.449" endtime="20200815 21:00:09.513"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:09.419" endtime="20200815 21:00:09.513"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:02.839" endtime="20200815 21:00:09.514"></status>
+</kw>
+<kw name="Given the user scrolls down in the home page until end of the page" library="Common">
+<kw name="Scroll Down Please" library="SmokeKeywords">
+<status status="PASS" starttime="20200815 21:00:09.515" endtime="20200815 21:00:19.521"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:09.514" endtime="20200815 21:00:19.522"></status>
+</kw>
+<kw name="And user types it's own mail to subscribe mail input area" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${SubscribeMailInput}</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:19.524" endtime="20200815 21:00:19.554"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${SubscribeMailInput}</arg>
+<arg>klglglasdfsf@gmail.com</arg>
+</arguments>
+<msg timestamp="20200815 21:00:19.554" level="INFO">Typing text 'klglglasdfsf@gmail.com' into text field 'css= #app &gt; div.content-wrapper &gt; div &gt; div &gt; div:nth-child(4) &gt; section &gt; div &gt; div &gt; div.newsletter-form-wrapper &gt; div &gt; div.newsletter-inputs &gt; div.newsletter-email-submit &gt; div.newsletter-email &gt; input'.</msg>
+<status status="PASS" starttime="20200815 21:00:19.554" endtime="20200815 21:00:19.701"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:19.523" endtime="20200815 21:00:19.701"></status>
+</kw>
+<kw name="When user clicks on inspire me button" library="Common">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${InsipreMeBtn}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:19.703" level="INFO">Clicking element 'css= #app &gt; div.content-wrapper &gt; div &gt; div &gt; div:nth-child(4) &gt; section &gt; div &gt; div &gt; div.newsletter-form-wrapper&gt; div &gt; div.newsletter-inputs &gt; div.newsletter-email-submit &gt; div.newsletter-submit &gt; button'.</msg>
+<status status="PASS" starttime="20200815 21:00:19.702" endtime="20200815 21:00:19.761"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:19.702" endtime="20200815 21:00:19.762"></status>
+</kw>
+<kw name="then subscribe message should be seen" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${SubscribeMessageArea}</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:19.763" endtime="20200815 21:00:21.375"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>${SubscribeMessageArea}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20200815 21:00:21.397" level="INFO">${text} = You are now checked-in!</msg>
+<status status="PASS" starttime="20200815 21:00:21.375" endtime="20200815 21:00:21.397"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${text}</arg>
+<arg>You are now checked-in!</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:21.397" endtime="20200815 21:00:21.397"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:19.762" endtime="20200815 21:00:21.398"></status>
+</kw>
+<kw name="End Web Test" library="Common" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200815 21:00:21.399" endtime="20200815 21:00:23.515"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:21.398" endtime="20200815 21:00:23.516"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:02.837" endtime="20200815 21:00:23.517" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Navigate to a destination through the menu on the top left">
+<kw name="Begin Web Test" library="Common" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:23.526" level="INFO">Opening browser 'Chrome' to base url 'https://magazine.trivago.com/'.</msg>
+<status status="PASS" starttime="20200815 21:00:23.525" endtime="20200815 21:00:28.058"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200815 21:00:28.058" endtime="20200815 21:00:30.177"></status>
+</kw>
+<kw name="Accept Cookie" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:30.178" endtime="20200815 21:00:30.212"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:30.213" level="INFO">Clicking element 'css= button#onetrust-accept-btn-handler'.</msg>
+<status status="PASS" starttime="20200815 21:00:30.212" endtime="20200815 21:00:30.275"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:30.177" endtime="20200815 21:00:30.276"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:23.524" endtime="20200815 21:00:30.276"></status>
+</kw>
+<kw name="Given the user clicks on the menu on the top left" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${TopLeftMenu}</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:30.277" endtime="20200815 21:00:30.305"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${TopLeftMenu}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:30.306" level="INFO">Clicking element 'css= #header &gt; div &gt; div &gt; div.nav-icon'.</msg>
+<status status="PASS" starttime="20200815 21:00:30.305" endtime="20200815 21:00:30.377"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:30.277" endtime="20200815 21:00:30.377"></status>
+</kw>
+<kw name="And user selects the destination" library="Common">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${Destination}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:30.379" level="INFO">Clicking element 'css= #menu &gt; div &gt; div &gt; div:nth-child(1) &gt; div.menu-expand-header &gt; div &gt; div'.</msg>
+<status status="PASS" starttime="20200815 21:00:30.378" endtime="20200815 21:00:30.451"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:30.378" endtime="20200815 21:00:30.451"></status>
+</kw>
+<kw name="when user selects the nothwest destination" library="Common">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<doc>Simulates hovering mouse over the element ``locator``.</doc>
+<arguments>
+<arg>${NothWestDestination}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:30.453" level="INFO">Simulating Mouse Over on element 'css= #menu &gt; div &gt; div &gt; div:nth-child(1) &gt; div.menu-container-wrapper.menu-expand &gt; div &gt; div.swiper-wrapper &gt; div.swiper-slide.menu-destination-card.swiper-slide-active &gt; a &gt; div'.</msg>
+<status status="PASS" starttime="20200815 21:00:30.453" endtime="20200815 21:00:30.798"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${NothWestDestination}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:30.798" level="INFO">Clicking element 'css= #menu &gt; div &gt; div &gt; div:nth-child(1) &gt; div.menu-container-wrapper.menu-expand &gt; div &gt; div.swiper-wrapper &gt; div.swiper-slide.menu-destination-card.swiper-slide-active &gt; a &gt; div'.</msg>
+<status status="PASS" starttime="20200815 21:00:30.798" endtime="20200815 21:00:33.303"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:30.452" endtime="20200815 21:00:33.303"></status>
+</kw>
+<kw name="then user reaches the nothwest destination page" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${NothWestPageHeader}</arg>
+<arg>timeout=15</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:33.305" endtime="20200815 21:00:33.334"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>${NothWestPageHeader}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20200815 21:00:33.357" level="INFO">${text} = Northwest</msg>
+<status status="PASS" starttime="20200815 21:00:33.334" endtime="20200815 21:00:33.357"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${text}</arg>
+<arg>Northwest</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:33.357" endtime="20200815 21:00:33.357"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:33.304" endtime="20200815 21:00:33.357"></status>
+</kw>
+<kw name="End Web Test" library="Common" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200815 21:00:33.358" endtime="20200815 21:00:35.535"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:33.358" endtime="20200815 21:00:35.536"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:23.522" endtime="20200815 21:00:35.537" critical="yes"></status>
+</test>
+<test id="s1-t5" name="Verify that the links in homepage are working">
+<kw name="Begin Web Test" library="Common" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:35.545" level="INFO">Opening browser 'Chrome' to base url 'https://magazine.trivago.com/'.</msg>
+<status status="PASS" starttime="20200815 21:00:35.544" endtime="20200815 21:00:40.266"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200815 21:00:40.267" endtime="20200815 21:00:42.396"></status>
+</kw>
+<kw name="Accept Cookie" library="Common">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+<arg>timeout=5</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:42.396" endtime="20200815 21:00:42.422"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${OkCookieBtn}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:42.423" level="INFO">Clicking element 'css= button#onetrust-accept-btn-handler'.</msg>
+<status status="PASS" starttime="20200815 21:00:42.423" endtime="20200815 21:00:42.488"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:42.396" endtime="20200815 21:00:42.489"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:35.543" endtime="20200815 21:00:42.489"></status>
+</kw>
+<kw name="Given the user is the home page" library="Common">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>https://magazine.trivago.com/</arg>
+</arguments>
+<msg timestamp="20200815 21:00:42.490" level="INFO">Opening url 'https://magazine.trivago.com/'</msg>
+<status status="PASS" starttime="20200815 21:00:42.490" endtime="20200815 21:00:44.657"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:42.490" endtime="20200815 21:00:44.657"></status>
+</kw>
+<kw name="Then the user clicks on each link on the footer" library="Common">
+<kw name="Find request result for link group" library="Common">
+<arguments>
+<arg>css= #footer-main &gt; div.container-wide &gt; div:nth-child(3) &gt; div &gt; div &gt; a</arg>
+</arguments>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>${element_group}</arg>
+</arguments>
+<assign>
+<var>${element_list}</var>
+</assign>
+<msg timestamp="20200815 21:00:44.683" level="INFO">${element_list} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="c393d776b59a8039405d5e5fa6f09860", element="9f95effc-c6ee-4dbd-90c2-6897868be5ae")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20200815 21:00:44.659" endtime="20200815 21:00:44.684"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>[item.get_attribute('href') for item in $element_list]</arg>
+</arguments>
+<assign>
+<var>${href_list}</var>
+</assign>
+<msg timestamp="20200815 21:00:44.750" level="INFO">${href_list} = ['https://magazine.trivago.com/about/', 'https://magazine.trivago.com.au/contact/', 'https://company.trivago.com/open-positions', 'https://company.trivago.com/press/', 'https://www.trivago.com/', 'htt...</msg>
+<status status="PASS" starttime="20200815 21:00:44.684" endtime="20200815 21:00:44.750"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${href_list}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:44.751" level="INFO">['https://magazine.trivago.com/about/', 'https://magazine.trivago.com.au/contact/', 'https://company.trivago.com/open-positions', 'https://company.trivago.com/press/', 'https://www.trivago.com/', 'https://www.trivago.com/app', 'https://studio.trivago.com/', 'https://www.trivago.com/legal-information', 'https://www.trivago.com/privacy-policy']</msg>
+<status status="PASS" starttime="20200815 21:00:44.750" endtime="20200815 21:00:44.751"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${href_list}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20200815 21:00:44.751" level="INFO">Length is 9</msg>
+<msg timestamp="20200815 21:00:44.751" level="INFO">${length} = 9</msg>
+<status status="PASS" starttime="20200815 21:00:44.751" endtime="20200815 21:00:44.751"></status>
+</kw>
+<kw name="${j} IN RANGE [ 0 | ${length} ]" type="for">
+<kw name="${j} = 0" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:44.752" level="INFO">${asd} = /</msg>
+<status status="PASS" starttime="20200815 21:00:44.751" endtime="20200815 21:00:44.752"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:44.752" endtime="20200815 21:00:44.753"></status>
+</kw>
+<msg timestamp="20200815 21:00:44.753" level="INFO">${newhref} = https://magazine.trivago.com/about</msg>
+<status status="PASS" starttime="20200815 21:00:44.752" endtime="20200815 21:00:44.753"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:44.753" level="INFO">${newhref} = https://magazine.trivago.com/about</msg>
+<status status="PASS" starttime="20200815 21:00:44.753" endtime="20200815 21:00:44.753"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:44.753" level="INFO">Creating Session using : alias=sessionName, url=https://magazine.trivago.com/about, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:44.753" endtime="20200815 21:00:44.754"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:45.163" level="INFO">GET Request : url=https://magazine.trivago.com/about/ 
+ path_url=/about/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:45.164" level="INFO">GET Response : url=https://magazine.trivago.com/about/ 
+ status=200, reason=OK 
+ body=&lt;!doctype html&gt;&lt;html data-n-head-ssr lang="en-US" data-n-head="lang"&gt;&lt;head&gt;&lt;script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="b7686e94-cfbd-4218-b767-1520452aee73"&gt;&lt;/script&gt;&lt;script type="text/javascript"&gt;function OptanonWrapper() { }&lt;/script&gt;&lt;style&gt;.async-hide{opacity:0!important}&lt;/style&gt;&lt;script&gt;(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+            h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+            (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+        })(window,document.documentElement,'async-hide','dataLayer',4000,
+            {'GTM-5D3L6CF':true});&lt;/script&gt;&lt;script src="/jquery-3.3.1.slim.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;&lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5D3L6CF');&lt;/script&gt;&lt;title data-n-head="true"&gt;trivago Magazine&lt;/title&gt;&lt;meta data-n-head="true" charset="utf-8"&gt;&lt;meta data-n-head="true" name="viewport" content="width=device-width,initial-scale=1"&gt;&lt;meta data-n-head="true" data-hid="description" name="description" content="trivago Magazine"&gt;&lt;meta data-n-head="true" name="msvalidate.01" content="309E4EC1E16AEE235A8562CE1BC6581E"&gt;&lt;meta data-n-head="true" name="google-site-verification" content="4-YOKcSBO95Zl08U5yVTOhF-68YrUmHJnGO1hDMN_70"&gt;&lt;meta data-n-head="true" name="p:domain_verify" content="fb32dc70c63b6b950ffa2d0bc9f17013"&gt;&lt;link data-n-head="true" rel="icon" type="image/x-icon" href="https://media-magazine.trivago.com/assets/img/favicon_trv.png"&gt;&lt;style data-vue-ssr-id="0381a060:0 75d58314:0 2ad99d0e:0 0486ed46:0 6df7b770:0 dea7db52:0 17cfdfa9:0 18a48619:0 2ebc7254:0 7d590730:0 3ea776d4:0 10dc0c38:0 e9dc7cd4:0"&gt;.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid.hero,.container.hero{min-height:100vh;display:flex;justify-content:center;align-items:center}.container-fluid{padding-right:2rem;padding-left:2rem}@media only screen and (min-width:48em){.container{width:45rem}}@media only screen and (min-width:64em){.container{width:60rem}}@media only screen and (min-width:75em){.container{width:70rem}}.row{box-sizing:border-box;display:flex;flex:0 1 auto;flex-direction:row;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{flex-direction:row-reverse}[dir=ltr] .start-xs{text-align:left}[dir=rtl] .start-xs{text-align:right}.start-xs{justify-content:flex-start}.center-xs{justify-content:center;text-align:center}[dir=ltr] .end-xs{text-align:right}[dir=rtl] .end-xs{text-align:left}.end-xs{justify-content:flex-end}.top-xs{align-items:flex-start}.middle-xs{align-items:center}.bottom-xs{align-items:flex-end}.around-xs{justify-content:space-around}.between-xs{justify-content:space-between}@media only screen and (min-width:48em){[dir=ltr] .start-sm{text-align:left}[dir=rtl] .start-sm{text-align:right}.start-sm{justify-content:flex-start}.center-sm{justify-content:center;text-align:center}[dir=ltr] .end-sm{text-align:right}[dir=rtl] .end-sm{text-align:left}.end-sm{justify-content:flex-end}.top-sm{align-items:flex-start}.middle-sm{align-items:center}.bottom-sm{align-items:flex-end}.around-sm{justify-content:space-around}.between-sm{justify-content:space-between}}@media only screen and (min-width:64em){[dir=ltr] .start-md{text-align:left}[dir=rtl] .start-md{text-align:right}.start-md{justify-content:flex-start}.center-md{justify-content:center;text-align:center}[dir=ltr] .end-md{text-align:right}[dir=rtl] .end-md{text-align:left}.end-md{justify-content:flex-end}.top-md{align-items:flex-start}.middle-md{align-items:center}.bottom-md{align-items:flex-end}.around-md{justify-content:space-around}.between-md{justify-content:space-between}}@media only screen and (min-width:75em){[dir=ltr] .start-lg{text-align:left}[dir=rtl] .start-lg{text-align:right}.start-lg{justify-content:flex-start}.center-lg{justify-content:center;text-align:center}[dir=ltr] .end-lg{text-align:right}[dir=rtl] .end-lg{text-align:left}.end-lg{justify-content:flex-end}.top-lg{align-items:flex-start}.middle-lg{align-items:center}.bottom-lg{align-items:flex-end}.around-lg{justify-content:space-around}.between-lg{justify-content:space-between}}.col.reverse{flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;flex:0 0 auto;padding:.5rem}.col-xs{flex-grow:1;flex-basis:0;max-width:100%}.col-xs-1{flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{flex-basis:25%;max-width:25%}.col-xs-4{flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{flex-basis:50%;max-width:50%}.col-xs-7{flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{flex-basis:75%;max-width:75%}.col-xs-10{flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.first-xs{order:-1}.last-xs{order:1}@media only screen and (min-width:48em){.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;flex:0 0 auto;padding:.5rem}.col-sm{flex-grow:1;flex-basis:0;max-width:100%}.col-sm-1{flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{flex-basis:25%;max-width:25%}.col-sm-4{flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{flex-basis:50%;max-width:50%}.col-sm-7{flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{flex-basis:75%;max-width:75%}.col-sm-10{flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.first-sm{order:-1}.last-sm{order:1}}@media only screen and (min-width:64em){.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;flex:0 0 auto;padding:.5rem}.col-md{flex-grow:1;flex-basis:0;max-width:100%}.col-md-1{flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{flex-basis:25%;max-width:25%}.col-md-4{flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{flex-basis:50%;max-width:50%}.col-md-7{flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{flex-basis:75%;max-width:75%}.col-md-10{flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.first-md{order:-1}.last-md{order:1}}@media only screen and (min-width:75em){.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;flex:0 0 auto;padding:.5rem}.col-lg{flex-grow:1;flex-basis:0;max-width:100%}.col-lg-1{flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{flex-basis:16.66666667%;max-width:16.66666667%}.c... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20200815 21:00:45.164" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:44.754" endtime="20200815 21:00:45.164"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:45.164" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:45.164" endtime="20200815 21:00:45.164"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:45.165" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:45.165" endtime="20200815 21:00:45.165"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:45.165" endtime="20200815 21:00:45.165"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:44.751" endtime="20200815 21:00:45.165"></status>
+</kw>
+<kw name="${j} = 1" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:45.166" level="INFO">${asd} = /</msg>
+<status status="PASS" starttime="20200815 21:00:45.165" endtime="20200815 21:00:45.166"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:45.166" endtime="20200815 21:00:45.167"></status>
+</kw>
+<msg timestamp="20200815 21:00:45.167" level="INFO">${newhref} = https://magazine.trivago.com.au/contact</msg>
+<status status="PASS" starttime="20200815 21:00:45.166" endtime="20200815 21:00:45.167"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:45.167" level="INFO">${newhref} = https://magazine.trivago.com.au/contact</msg>
+<status status="PASS" starttime="20200815 21:00:45.167" endtime="20200815 21:00:45.167"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:45.168" level="INFO">Creating Session using : alias=sessionName, url=https://magazine.trivago.com.au/contact, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:45.167" endtime="20200815 21:00:45.168"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:45.767" level="INFO">GET Request : url=https://magazine.trivago.com.au/contact/ 
+ path_url=/contact/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:45.767" level="INFO">GET Response : url=https://magazine.trivago.com.au/contact/ 
+ status=200, reason=OK 
+ body=&lt;!doctype html&gt;&lt;html data-n-head-ssr lang="en-AU" data-n-head="lang"&gt;&lt;head&gt;&lt;script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="d94ae973-9f61-49c6-8e46-ba3c336391d9"&gt;&lt;/script&gt;&lt;script type="text/javascript"&gt;function OptanonWrapper() { }&lt;/script&gt;&lt;style&gt;.async-hide{opacity:0!important}&lt;/style&gt;&lt;script&gt;(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+            h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+            (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+        })(window,document.documentElement,'async-hide','dataLayer',4000,
+            {'GTM-5D3L6CF':true});&lt;/script&gt;&lt;script src="/jquery-3.3.1.slim.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;&lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5D3L6CF');&lt;/script&gt;&lt;title data-n-head="true"&gt;trivago Magazine&lt;/title&gt;&lt;meta data-n-head="true" charset="utf-8"&gt;&lt;meta data-n-head="true" name="viewport" content="width=device-width,initial-scale=1"&gt;&lt;meta data-n-head="true" data-hid="description" name="description" content="trivago Magazine"&gt;&lt;meta data-n-head="true" name="msvalidate.01" content="309E4EC1E16AEE235A8562CE1BC6581E"&gt;&lt;meta data-n-head="true" name="google-site-verification" content="M9cHVS1_DuV7C5Qf0EkceNSNnD1jx6uF2HBqSRwDrXY"&gt;&lt;meta data-n-head="true" name="" content=""&gt;&lt;link data-n-head="true" rel="icon" type="image/x-icon" href="https://media-magazine.trivago.com/assets/img/favicon_trv.png"&gt;&lt;style data-vue-ssr-id="0381a060:0 75d58314:0 2ad99d0e:0 0486ed46:0 6df7b770:0 dea7db52:0 17cfdfa9:0 18a48619:0 2ebc7254:0 6f26cc56:0 e9dc7cd4:0"&gt;.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid.hero,.container.hero{min-height:100vh;display:flex;justify-content:center;align-items:center}.container-fluid{padding-right:2rem;padding-left:2rem}@media only screen and (min-width:48em){.container{width:45rem}}@media only screen and (min-width:64em){.container{width:60rem}}@media only screen and (min-width:75em){.container{width:70rem}}.row{box-sizing:border-box;display:flex;flex:0 1 auto;flex-direction:row;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{flex-direction:row-reverse}[dir=ltr] .start-xs{text-align:left}[dir=rtl] .start-xs{text-align:right}.start-xs{justify-content:flex-start}.center-xs{justify-content:center;text-align:center}[dir=ltr] .end-xs{text-align:right}[dir=rtl] .end-xs{text-align:left}.end-xs{justify-content:flex-end}.top-xs{align-items:flex-start}.middle-xs{align-items:center}.bottom-xs{align-items:flex-end}.around-xs{justify-content:space-around}.between-xs{justify-content:space-between}@media only screen and (min-width:48em){[dir=ltr] .start-sm{text-align:left}[dir=rtl] .start-sm{text-align:right}.start-sm{justify-content:flex-start}.center-sm{justify-content:center;text-align:center}[dir=ltr] .end-sm{text-align:right}[dir=rtl] .end-sm{text-align:left}.end-sm{justify-content:flex-end}.top-sm{align-items:flex-start}.middle-sm{align-items:center}.bottom-sm{align-items:flex-end}.around-sm{justify-content:space-around}.between-sm{justify-content:space-between}}@media only screen and (min-width:64em){[dir=ltr] .start-md{text-align:left}[dir=rtl] .start-md{text-align:right}.start-md{justify-content:flex-start}.center-md{justify-content:center;text-align:center}[dir=ltr] .end-md{text-align:right}[dir=rtl] .end-md{text-align:left}.end-md{justify-content:flex-end}.top-md{align-items:flex-start}.middle-md{align-items:center}.bottom-md{align-items:flex-end}.around-md{justify-content:space-around}.between-md{justify-content:space-between}}@media only screen and (min-width:75em){[dir=ltr] .start-lg{text-align:left}[dir=rtl] .start-lg{text-align:right}.start-lg{justify-content:flex-start}.center-lg{justify-content:center;text-align:center}[dir=ltr] .end-lg{text-align:right}[dir=rtl] .end-lg{text-align:left}.end-lg{justify-content:flex-end}.top-lg{align-items:flex-start}.middle-lg{align-items:center}.bottom-lg{align-items:flex-end}.around-lg{justify-content:space-around}.between-lg{justify-content:space-between}}.col.reverse{flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;flex:0 0 auto;padding:.5rem}.col-xs{flex-grow:1;flex-basis:0;max-width:100%}.col-xs-1{flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{flex-basis:25%;max-width:25%}.col-xs-4{flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{flex-basis:50%;max-width:50%}.col-xs-7{flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{flex-basis:75%;max-width:75%}.col-xs-10{flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.first-xs{order:-1}.last-xs{order:1}@media only screen and (min-width:48em){.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;flex:0 0 auto;padding:.5rem}.col-sm{flex-grow:1;flex-basis:0;max-width:100%}.col-sm-1{flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{flex-basis:25%;max-width:25%}.col-sm-4{flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{flex-basis:50%;max-width:50%}.col-sm-7{flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{flex-basis:75%;max-width:75%}.col-sm-10{flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.first-sm{order:-1}.last-sm{order:1}}@media only screen and (min-width:64em){.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;flex:0 0 auto;padding:.5rem}.col-md{flex-grow:1;flex-basis:0;max-width:100%}.col-md-1{flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{flex-basis:25%;max-width:25%}.col-md-4{flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{flex-basis:50%;max-width:50%}.col-md-7{flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{flex-basis:75%;max-width:75%}.col-md-10{flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.first-md{order:-1}.last-md{order:1}}@media only screen and (min-width:75em){.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;flex:0 0 auto;padding:.5rem}.col-lg{flex-grow:1;flex-basis:0;max-width:100%}.col-lg-1{flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{flex-basis:25%;max-width:25%}.col-lg-4{flex-basis:33.33333333... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20200815 21:00:45.767" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:45.168" endtime="20200815 21:00:45.767"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:45.767" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:45.767" endtime="20200815 21:00:45.767"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:45.768" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:45.768" endtime="20200815 21:00:45.768"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:45.768" endtime="20200815 21:00:45.768"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:45.165" endtime="20200815 21:00:45.768"></status>
+</kw>
+<kw name="${j} = 2" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:45.769" level="INFO">${asd} = s</msg>
+<status status="PASS" starttime="20200815 21:00:45.768" endtime="20200815 21:00:45.769"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Line" library="String">
+<doc>Returns the specified line from the given ``string``.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:45.769" endtime="20200815 21:00:45.769"></status>
+</kw>
+<msg timestamp="20200815 21:00:45.769" level="INFO">${newhref} = https://company.trivago.com/open-positions</msg>
+<status status="PASS" starttime="20200815 21:00:45.769" endtime="20200815 21:00:45.769"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:45.770" level="INFO">${newhref} = https://company.trivago.com/open-positions</msg>
+<status status="PASS" starttime="20200815 21:00:45.769" endtime="20200815 21:00:45.770"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:45.770" level="INFO">Creating Session using : alias=sessionName, url=https://company.trivago.com/open-positions, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:45.770" endtime="20200815 21:00:45.770"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:46.502" level="INFO">GET Request : url=https://company.trivago.com/open-positions/ 
+ path_url=/open-positions/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:46.502" level="INFO">GET Response : url=https://company.trivago.com/open-positions/ 
+ status=200, reason=OK 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en-US" class="no-js"&gt;
+&lt;head&gt;
+	&lt;!-- OneTrust Cookies Consent Notice start --&gt;&lt;script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="b7686e94-cfbd-4218-b767-1520452aee73"&gt;&lt;/script&gt;&lt;script type="text/javascript"&gt;function OptanonWrapper() { }&lt;/script&gt;&lt;!-- OneTrust Cookies Consent Notice end --&gt;
+	&lt;!-- Google Tag Manager --&gt;
+    &lt;script&gt;
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W2TN8Q2');
+        var _gaq = _gaq || [];
+        _gaq.push (['_setAccount', 'UA-109955171-1']);
+        _gaq.push (['_gat._anonymizeIp']);
+        _gaq.push (['_trackPageview']);
+    &lt;/script&gt;
+    &lt;!-- End Google Tag Manager --&gt;
+    &lt;!-- Meta tags --&gt;
+	&lt;meta charset="UTF-8"&gt;
+	&lt;meta name="viewport" content="width=device-width"&gt;
+	&lt;link rel="profile" href="http://gmpg.org/xfn/11"&gt;
+	&lt;link rel="pingback" href="https://company.trivago.com/wp/xmlrpc.php"&gt;
+            &lt;meta property="og:url" content="/open-positions" /&gt;
+        &lt;meta property="og:title" content="Open Positions" /&gt;
+        &lt;meta property="og:image" content="/wp-content/themes/copa-theme-riverine/images/careers/meta-share.jpeg" /&gt;
+    	&lt;!--[if lt IE 9]&gt;
+	&lt;script src="https://company.trivago.com/wp-content/themes/copa-theme-riverine/js/html5.js"&gt;&lt;/script&gt;
+	&lt;![endif]--&gt;
+	&lt;script&gt;(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);&lt;/script&gt;
+&lt;title&gt;Open positions &amp;#8211; trivago &amp;#8211; Company Pages&lt;/title&gt;
+&lt;link rel='dns-prefetch' href='//s.w.org' /&gt;
+&lt;link rel="alternate" type="application/rss+xml" title="trivago - Company Pages &amp;raquo; Feed" href="https://company.trivago.com/feed/" /&gt;
+&lt;link rel="alternate" type="application/rss+xml" title="trivago - Company Pages &amp;raquo; Comments Feed" href="https://company.trivago.com/comments/feed/" /&gt;
+&lt;link rel="alternate" type="text/calendar" title="trivago - Company Pages &amp;raquo; iCal Feed" href="https://company.trivago.com/events/?ical=1" /&gt;
+		&lt;script type="text/javascript"&gt;
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/company.trivago.com\/wp\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&amp;&amp;p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&amp;&amp;(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&amp;&amp;!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o&lt;i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&amp;&amp;t.supports[i[o]],"flag"!==i[o]&amp;&amp;(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&amp;&amp;t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&amp;&amp;!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&amp;&amp;t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&amp;&amp;r.twemoji&amp;&amp;(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		&lt;/script&gt;
+		&lt;style type="text/css"&gt;
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+&lt;/style&gt;
+	&lt;link rel='stylesheet' id='tribe-common-skeleton-style-css'  href='https://company.trivago.com/wp-content/plugins/the-events-calendar/common/src/resources/css/common-skeleton.min.css?ver=4.11.0' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='tribe-tooltip-css'  href='https://company.trivago.com/wp-content/plugins/the-events-calendar/common/src/resources/css/tooltip.min.css?ver=4.11.0' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='wp-block-library-css'  href='https://company.trivago.com/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.3.2' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='contact-form-7-css'  href='https://company.trivago.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.6' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='workday-job-importer-css'  href='https://company.trivago.com/wp-content/plugins/copa-plugin-workday-importer/public/css/workday-job-importer-public.css?ver=1.1.6' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='styles ltr-css'  href='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/css/styles-ltr.css?ver=5.3.2' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='styles helper-css'  href='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/css/helper.css?ver=5.3.2' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='theme style-css'  href='https://company.trivago.com/wp-content/themes/copa-theme-riverine/style.css?ver=5.3.2' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='custom style-css'  href='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/css/custom-style.css?ver=1596031142' type='text/css' media='all' /&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/plugins/copa-plugin-workday-importer/public/js/workday-job-importer-public.js?ver=1.1.6'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/jquery.min.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/carousel/slick.min.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/carousel/press-carousel.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/carousel/owl.carousel.min.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/contact-form-functions.js?ver=1596031142'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/patternlab.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/search-filters-jobs-openings.js?ver=1596031142'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/search-filters-jobs-roles-wd.js?ver=1596031142'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/gh-src-service.js?ver=1596031142'&gt;&lt;/script&gt;
+&lt;link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://company.trivago.com/wp/xmlrpc.php?rsd" /&gt;
+&lt;link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://company.trivago.com/wp/wp-includes/wlwmanifest.xml" /&gt; 
+&lt;meta name="generator" content="WordPress 5.3.2" /&gt;
+&lt;link rel="canonical" href="https://company.trivago.com/open-positions/" /&gt;
+&lt;link rel='shortlink' href='https://company.trivago.com/?p=2177' /&gt;
+&lt;link rel="alternate" type="application/json+oembed" href="https://company.trivago.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcompany.trivago.com%2Fopen-positions%2F" /&gt;
+&lt;link rel="alternate" type="text/xml+oembed" href="https://company.trivago.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcompany.trivago.com%2Fopen-positions%2F&amp;#038;format=xml" /&gt;
+&lt;meta name="tec-api-version" content="v1"&gt;&lt;meta name="tec-api-origin" content="https://company.trivago.com"&gt;&lt;link rel="https://theeventscalendar.com/" href="https://company.trivago.com/wp-json/tribe/events/v1/" /&gt;    &lt;link rel="shortcut icon" type="image/x-icon" href="https://company.trivago.com/wp-content/themes/copa-theme-riverine/images/favicon-32x32.png" /&gt;
+    &lt;link rel="icon" href="https://company.trivago.com/wp-content/themes/copa-theme-riverine/images/favicon-32x32.png" type="image/x-icon" /&gt;
+&lt;/head&gt;
+
+&lt;body class="page-template page-template-templates page-template-job-roles page-template-templatesjob-roles-php page page-id-2177 tribe-no-js... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20200815 21:00:46.503" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:45.771" endtime="20200815 21:00:46.503"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:46.504" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:46.503" endtime="20200815 21:00:46.504"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:46.505" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:46.504" endtime="20200815 21:00:46.505"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:46.504" endtime="20200815 21:00:46.505"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:45.768" endtime="20200815 21:00:46.505"></status>
+</kw>
+<kw name="${j} = 3" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:46.506" level="INFO">${asd} = /</msg>
+<status status="PASS" starttime="20200815 21:00:46.505" endtime="20200815 21:00:46.506"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:46.507" endtime="20200815 21:00:46.507"></status>
+</kw>
+<msg timestamp="20200815 21:00:46.507" level="INFO">${newhref} = https://company.trivago.com/press</msg>
+<status status="PASS" starttime="20200815 21:00:46.506" endtime="20200815 21:00:46.507"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:46.508" level="INFO">${newhref} = https://company.trivago.com/press</msg>
+<status status="PASS" starttime="20200815 21:00:46.507" endtime="20200815 21:00:46.508"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:46.509" level="INFO">Creating Session using : alias=sessionName, url=https://company.trivago.com/press, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:46.508" endtime="20200815 21:00:46.509"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:47.220" level="INFO">GET Request : url=https://company.trivago.com/press/ 
+ path_url=/press/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:47.221" level="INFO">GET Response : url=https://company.trivago.com/press/ 
+ status=200, reason=OK 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en-US" class="no-js"&gt;
+&lt;head&gt;
+    &lt;!-- OneTrust Cookies Consent Notice start --&gt;&lt;script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="b7686e94-cfbd-4218-b767-1520452aee73"&gt;&lt;/script&gt;&lt;script type="text/javascript"&gt;function OptanonWrapper() { }&lt;/script&gt;&lt;!-- OneTrust Cookies Consent Notice end --&gt;
+    &lt;!-- Google Tag Manager --&gt;
+    &lt;script&gt;
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W2TN8Q2');
+        var _gaq = _gaq || [];
+        _gaq.push (['_setAccount', 'UA-109955171-1']);
+        _gaq.push (['_gat._anonymizeIp']);
+        _gaq.push (['_trackPageview']);
+    &lt;/script&gt;
+    &lt;!-- End Google Tag Manager --&gt;
+    &lt;!-- Meta tags --&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width"&gt;
+    &lt;link rel="profile" href="http://gmpg.org/xfn/11"&gt;
+    &lt;link rel="pingback" href="https://company.trivago.com/wp/xmlrpc.php"&gt;
+        &lt;!--[if lt IE 9]&gt;
+    &lt;script src="https://company.trivago.com/wp-content/themes/copa-theme-riverine/js/html5.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+    &lt;script&gt;(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);&lt;/script&gt;
+&lt;title&gt;Press &amp;#8211; trivago &amp;#8211; Company Pages&lt;/title&gt;
+&lt;link rel='dns-prefetch' href='//s.w.org' /&gt;
+&lt;link rel="alternate" type="application/rss+xml" title="trivago - Company Pages &amp;raquo; Feed" href="https://company.trivago.com/feed/" /&gt;
+&lt;link rel="alternate" type="application/rss+xml" title="trivago - Company Pages &amp;raquo; Comments Feed" href="https://company.trivago.com/comments/feed/" /&gt;
+&lt;link rel="alternate" type="text/calendar" title="trivago - Company Pages &amp;raquo; iCal Feed" href="https://company.trivago.com/events/?ical=1" /&gt;
+		&lt;script type="text/javascript"&gt;
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/company.trivago.com\/wp\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&amp;&amp;p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&amp;&amp;(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&amp;&amp;!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o&lt;i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&amp;&amp;t.supports[i[o]],"flag"!==i[o]&amp;&amp;(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&amp;&amp;t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&amp;&amp;!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&amp;&amp;t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&amp;&amp;r.twemoji&amp;&amp;(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		&lt;/script&gt;
+		&lt;style type="text/css"&gt;
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+&lt;/style&gt;
+	&lt;link rel='stylesheet' id='tribe-common-skeleton-style-css'  href='https://company.trivago.com/wp-content/plugins/the-events-calendar/common/src/resources/css/common-skeleton.min.css?ver=4.11.0' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='tribe-tooltip-css'  href='https://company.trivago.com/wp-content/plugins/the-events-calendar/common/src/resources/css/tooltip.min.css?ver=4.11.0' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='wp-block-library-css'  href='https://company.trivago.com/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.3.2' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='contact-form-7-css'  href='https://company.trivago.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.6' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='workday-job-importer-css'  href='https://company.trivago.com/wp-content/plugins/copa-plugin-workday-importer/public/css/workday-job-importer-public.css?ver=1.1.6' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='styles ltr-css'  href='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/css/styles-ltr.css?ver=5.3.2' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='styles helper-css'  href='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/css/helper.css?ver=5.3.2' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='theme style-css'  href='https://company.trivago.com/wp-content/themes/copa-theme-riverine/style.css?ver=5.3.2' type='text/css' media='all' /&gt;
+&lt;link rel='stylesheet' id='custom style-css'  href='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/css/custom-style.css?ver=1596031142' type='text/css' media='all' /&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/plugins/copa-plugin-workday-importer/public/js/workday-job-importer-public.js?ver=1.1.6'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/jquery.min.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/carousel/slick.min.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/carousel/press-carousel.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/carousel/owl.carousel.min.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/contact-form-functions.js?ver=1596031142'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/patternlab.js?ver=5.3.2'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/search-filters-jobs-openings.js?ver=1596031142'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/search-filters-jobs-roles-wd.js?ver=1596031142'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://company.trivago.com/wp-content/themes/copa-theme-riverine/assets/js/gh-src-service.js?ver=1596031142'&gt;&lt;/script&gt;
+&lt;link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://company.trivago.com/wp/xmlrpc.php?rsd" /&gt;
+&lt;link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://company.trivago.com/wp/wp-includes/wlwmanifest.xml" /&gt; 
+&lt;meta name="generator" content="WordPress 5.3.2" /&gt;
+&lt;link rel="canonical" href="https://company.trivago.com/press/" /&gt;
+&lt;link rel='shortlink' href='https://company.trivago.com/?p=20' /&gt;
+&lt;link rel="alternate" type="application/json+oembed" href="https://company.trivago.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcompany.trivago.com%2Fpress%2F" /&gt;
+&lt;link rel="alternate" type="text/xml+oembed" href="https://company.trivago.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcompany.trivago.com%2Fpress%2F&amp;#038;format=xml" /&gt;
+&lt;meta name="tec-api-version" content="v1"&gt;&lt;meta name="tec-api-origin" content="https://company.trivago.com"&gt;&lt;link rel="https://theeventscalendar.com/" href="https://company.trivago.com/wp-json/tribe/events/v1/" /&gt;
+    &lt;link rel="shortcut icon" type="image/x-icon" href="https://company.trivago.com/wp-content/themes/copa-theme-riverine/images/favicon-32x32.png" /&gt;
+    &lt;link rel="icon" href="https://company.trivago.com/wp-content/themes/copa-theme-riverine/images/favicon-32x32.png" type="image/x-icon" /&gt;
+&lt;/head&gt;
+
+&lt;body class="page-template page-template-templates page-template-press page-template-templatespress-php page page-id-20 page-parent tribe-no-js page-template-appdata-company_pages_data-branches-live_new_v3-2-3_44-public-wp-content-themes-copa-theme-riverine-templates-press-php"&gt;
+    &lt;!-- Google Tag Manager (noscript) -... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20200815 21:00:47.222" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:46.509" endtime="20200815 21:00:47.222"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:47.223" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:47.222" endtime="20200815 21:00:47.223"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:47.225" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:47.224" endtime="20200815 21:00:47.226"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:47.224" endtime="20200815 21:00:47.226"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:46.505" endtime="20200815 21:00:47.226"></status>
+</kw>
+<kw name="${j} = 4" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:47.228" level="INFO">${asd} = /</msg>
+<status status="PASS" starttime="20200815 21:00:47.226" endtime="20200815 21:00:47.228"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:47.229" endtime="20200815 21:00:47.230"></status>
+</kw>
+<msg timestamp="20200815 21:00:47.231" level="INFO">${newhref} = https://www.trivago.com</msg>
+<status status="PASS" starttime="20200815 21:00:47.228" endtime="20200815 21:00:47.231"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:47.232" level="INFO">${newhref} = https://www.trivago.com</msg>
+<status status="PASS" starttime="20200815 21:00:47.231" endtime="20200815 21:00:47.232"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:47.233" level="INFO">Creating Session using : alias=sessionName, url=https://www.trivago.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:47.233" endtime="20200815 21:00:47.234"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:47.572" level="INFO">GET Request : url=https://www.trivago.com/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:47.572" level="INFO">GET Response : url=https://www.trivago.com/ 
+ status=403, reason=Forbidden 
+ body=&lt;HTML&gt;&lt;HEAD&gt;
+&lt;TITLE&gt;Access Denied&lt;/TITLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;
+&lt;H1&gt;Access Denied&lt;/H1&gt;
+ 
+You don't have permission to access "http&amp;#58;&amp;#47;&amp;#47;www&amp;#46;trivago&amp;#46;com&amp;#47;" on this server.&lt;P&gt;
+Reference&amp;#32;&amp;#35;18&amp;#46;d4b51002&amp;#46;1597514447&amp;#46;1272dd91
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+ 
+ </msg>
+<msg timestamp="20200815 21:00:47.572" level="INFO">${resp} = &lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:47.234" endtime="20200815 21:00:47.572"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:47.573" level="INFO">&lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:47.573" endtime="20200815 21:00:47.574"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:47.574" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20200815 21:00:47.575" level="FAIL">403 != 200</msg>
+<status status="FAIL" starttime="20200815 21:00:47.574" endtime="20200815 21:00:47.575"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:47.574" endtime="20200815 21:00:47.575"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:47.226" endtime="20200815 21:00:47.575"></status>
+</kw>
+<kw name="${j} = 5" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:47.575" level="INFO">${asd} = p</msg>
+<status status="PASS" starttime="20200815 21:00:47.575" endtime="20200815 21:00:47.575"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Line" library="String">
+<doc>Returns the specified line from the given ``string``.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:47.576" endtime="20200815 21:00:47.576"></status>
+</kw>
+<msg timestamp="20200815 21:00:47.576" level="INFO">${newhref} = https://www.trivago.com/app</msg>
+<status status="PASS" starttime="20200815 21:00:47.575" endtime="20200815 21:00:47.576"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:47.576" level="INFO">${newhref} = https://www.trivago.com/app</msg>
+<status status="PASS" starttime="20200815 21:00:47.576" endtime="20200815 21:00:47.577"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:47.577" level="INFO">Creating Session using : alias=sessionName, url=https://www.trivago.com/app, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:47.577" endtime="20200815 21:00:47.578"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:48.027" level="INFO">GET Request : url=https://www.trivago.com/app/ 
+ path_url=/app/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:48.028" level="INFO">GET Response : url=https://www.trivago.com/app/ 
+ status=403, reason=Forbidden 
+ body=&lt;HTML&gt;&lt;HEAD&gt;
+&lt;TITLE&gt;Access Denied&lt;/TITLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;
+&lt;H1&gt;Access Denied&lt;/H1&gt;
+ 
+You don't have permission to access "http&amp;#58;&amp;#47;&amp;#47;www&amp;#46;trivago&amp;#46;com&amp;#47;app&amp;#47;" on this server.&lt;P&gt;
+Reference&amp;#32;&amp;#35;18&amp;#46;d4b51002&amp;#46;1597514447&amp;#46;1272df2c
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+ 
+ </msg>
+<msg timestamp="20200815 21:00:48.028" level="INFO">${resp} = &lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:47.578" endtime="20200815 21:00:48.028"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.030" level="INFO">&lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:48.029" endtime="20200815 21:00:48.030"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.032" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20200815 21:00:48.032" level="FAIL">403 != 200</msg>
+<status status="FAIL" starttime="20200815 21:00:48.031" endtime="20200815 21:00:48.032"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:48.030" endtime="20200815 21:00:48.032"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:47.575" endtime="20200815 21:00:48.032"></status>
+</kw>
+<kw name="${j} = 6" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:48.033" level="INFO">${asd} = /</msg>
+<status status="PASS" starttime="20200815 21:00:48.033" endtime="20200815 21:00:48.033"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:48.034" endtime="20200815 21:00:48.034"></status>
+</kw>
+<msg timestamp="20200815 21:00:48.034" level="INFO">${newhref} = https://studio.trivago.com</msg>
+<status status="PASS" starttime="20200815 21:00:48.033" endtime="20200815 21:00:48.034"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.034" level="INFO">${newhref} = https://studio.trivago.com</msg>
+<status status="PASS" starttime="20200815 21:00:48.034" endtime="20200815 21:00:48.034"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.035" level="INFO">Creating Session using : alias=sessionName, url=https://studio.trivago.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:48.035" endtime="20200815 21:00:48.035"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:48.584" level="INFO">GET Request : url=https://studio.trivago.com/ (redirected) 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:48.584" level="INFO">GET Response : url=https://studio.trivago.com:443/home 
+ status=200, reason=OK 
+ body=&lt;!doctype html&gt;
+&lt;html lang="en" data-n-head="%7B%22lang%22:%7B%221%22:%22en%22%7D%7D"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Home | trivago Business Studio&lt;/title&gt;&lt;meta data-n-head="1" charset="utf-8"&gt;&lt;meta data-n-head="1" name="viewport" content="width=device-width,initial-scale=1"&gt;&lt;meta data-n-head="1" data-hid="description" name="description" content="Boost your business on trivago and connect with millions of travelers using trivago studio."&gt;&lt;meta data-n-head="1" data-hid="mobile-web-app-capable" name="mobile-web-app-capable" content="yes"&gt;&lt;meta data-n-head="1" data-hid="apple-mobile-web-app-title" name="apple-mobile-web-app-title" content="trivago Business Studio"&gt;&lt;meta data-n-head="1" data-hid="author" name="author" content="trivago N.V"&gt;&lt;meta data-n-head="1" data-hid="theme-color" name="theme-color" content="#66a400"&gt;&lt;meta data-n-head="1" data-hid="og:type" name="og:type" property="og:type" content="website"&gt;&lt;meta data-n-head="1" data-hid="og:title" name="og:title" property="og:title" content="trivago Business Studio"&gt;&lt;meta data-n-head="1" data-hid="og:site_name" name="og:site_name" property="og:site_name" content="trivago Business Studio"&gt;&lt;meta data-n-head="1" data-hid="og:description" name="og:description" property="og:description" content="The trivago studio client."&gt;&lt;link data-n-head="1" rel="preconnect" href="https://static.elev.io"&gt;&lt;link data-n-head="1" rel="preconnect" href="https://ipa.elev.io"&gt;&lt;link data-n-head="1" rel="preconnect" href="https://api.segment.io"&gt;&lt;link data-n-head="1" rel="manifest" href="/home/_cdn/manifest.0ce49bf0.json"&gt;&lt;link data-n-head="1" rel="shortcut icon" href="/home/_cdn/icons/icon_64.830aI20g2F0.png"&gt;&lt;link data-n-head="1" rel="apple-touch-icon" href="/home/_cdn/icons/icon_512.830aI20g2F0.png" sizes="512x512"&gt;&lt;script data-n-head="1" src="/home/js/instana.js" data-url="https://eum-eu-west-1.instana.io" data-key="rEYhXVgCT8CMuVcSCvW5vA"&gt;&lt;/script&gt;&lt;script data-n-head="1" src="https://eum.instana.io/eum.min.js"&gt;&lt;/script&gt;&lt;base href="/home/"&gt;&lt;link rel="preload" href="/home/_cdn/runtime.babfe79.js" as="script"&gt;&lt;link rel="preload" href="/home/_cdn/commons/app.464e6e5.js" as="script"&gt;&lt;link rel="preload" href="/home/_cdn/vendors~app.3774be3.js" as="script"&gt;&lt;link rel="preload" href="/home/_cdn/app.136feb3.css" as="style"&gt;&lt;link rel="preload" href="/home/_cdn/app.c7d8aa6.js" as="script"&gt;
+  &lt;link href="/home/_cdn/app.136feb3.css" rel="stylesheet"&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="__nuxt"&gt;&lt;style&gt;#nuxt-loading{background:#fff;visibility:hidden;opacity:0;position:absolute;left:0;right:0;top:0;bottom:0;display:flex;justify-content:center;align-items:center;flex-direction:column;animation:nuxtLoadingIn 10s ease;-webkit-animation:nuxtLoadingIn 10s ease;animation-fill-mode:forwards;overflow:hidden}@keyframes nuxtLoadingIn{0%{visibility:hidden;opacity:0}20%{visibility:visible;opacity:0}100%{visibility:visible;opacity:1}}@-webkit-keyframes nuxtLoadingIn{0%{visibility:hidden;opacity:0}20%{visibility:visible;opacity:0}100%{visibility:visible;opacity:1}}#nuxt-loading&gt;div,#nuxt-loading&gt;div:after{border-radius:50%;width:5rem;height:5rem}#nuxt-loading&gt;div{font-size:10px;position:relative;text-indent:-9999em;border:.5rem solid #f5f5f5;border-left:.5rem solid #66a400;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation:nuxtLoading 1.1s infinite linear;animation:nuxtLoading 1.1s infinite linear}#nuxt-loading.error&gt;div{border-left:.5rem solid #ff4500;animation-duration:5s}@-webkit-keyframes nuxtLoading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes nuxtLoading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}&lt;/style&gt;&lt;script&gt;window.addEventListener("error",function(){var e=document.getElementById("nuxt-loading");e&amp;&amp;(e.className+=" error")})&lt;/script&gt;&lt;div id="nuxt-loading" aria-live="polite" role="status"&gt;&lt;div&gt;Loading...&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;noscript data-n-head="1" data-body="true"&gt;This website requires JavaScript&lt;/noscript&gt;&lt;script&gt;window.__NUXT__={config:{},staticAssetsBase:void 0}&lt;/script&gt;
+  &lt;script src="/home/_cdn/runtime.babfe79.js"&gt;&lt;/script&gt;&lt;script src="/home/_cdn/commons/app.464e6e5.js"&gt;&lt;/script&gt;&lt;script src="/home/_cdn/vendors~app.3774be3.js"&gt;&lt;/script&gt;&lt;script src="/home/_cdn/app.c7d8aa6.js"&gt;&lt;/script&gt;&lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg timestamp="20200815 21:00:48.585" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:48.035" endtime="20200815 21:00:48.585"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.587" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:48.586" endtime="20200815 21:00:48.587"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.591" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:48.589" endtime="20200815 21:00:48.591"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:48.588" endtime="20200815 21:00:48.591"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:48.033" endtime="20200815 21:00:48.592"></status>
+</kw>
+<kw name="${j} = 7" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:48.594" level="INFO">${asd} = n</msg>
+<status status="PASS" starttime="20200815 21:00:48.593" endtime="20200815 21:00:48.595"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Line" library="String">
+<doc>Returns the specified line from the given ``string``.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:48.596" endtime="20200815 21:00:48.597"></status>
+</kw>
+<msg timestamp="20200815 21:00:48.597" level="INFO">${newhref} = https://www.trivago.com/legal-information</msg>
+<status status="PASS" starttime="20200815 21:00:48.595" endtime="20200815 21:00:48.597"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.598" level="INFO">${newhref} = https://www.trivago.com/legal-information</msg>
+<status status="PASS" starttime="20200815 21:00:48.598" endtime="20200815 21:00:48.599"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.599" level="INFO">Creating Session using : alias=sessionName, url=https://www.trivago.com/legal-information, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:48.599" endtime="20200815 21:00:48.600"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:48.913" level="INFO">GET Request : url=https://www.trivago.com/legal-information/ 
+ path_url=/legal-information/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:48.913" level="INFO">GET Response : url=https://www.trivago.com/legal-information/ 
+ status=403, reason=Forbidden 
+ body=&lt;HTML&gt;&lt;HEAD&gt;
+&lt;TITLE&gt;Access Denied&lt;/TITLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;
+&lt;H1&gt;Access Denied&lt;/H1&gt;
+ 
+You don't have permission to access "http&amp;#58;&amp;#47;&amp;#47;www&amp;#46;trivago&amp;#46;com&amp;#47;legal&amp;#45;information&amp;#47;" on this server.&lt;P&gt;
+Reference&amp;#32;&amp;#35;18&amp;#46;d4b51002&amp;#46;1597514448&amp;#46;1272e450
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+ 
+ </msg>
+<msg timestamp="20200815 21:00:48.913" level="INFO">${resp} = &lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:48.600" endtime="20200815 21:00:48.913"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.915" level="INFO">&lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:48.914" endtime="20200815 21:00:48.915"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.917" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20200815 21:00:48.917" level="FAIL">403 != 200</msg>
+<status status="FAIL" starttime="20200815 21:00:48.916" endtime="20200815 21:00:48.917"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:48.915" endtime="20200815 21:00:48.918"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:48.592" endtime="20200815 21:00:48.918"></status>
+</kw>
+<kw name="${j} = 8" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:48.919" level="INFO">${asd} = y</msg>
+<status status="PASS" starttime="20200815 21:00:48.918" endtime="20200815 21:00:48.919"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Line" library="String">
+<doc>Returns the specified line from the given ``string``.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:48.921" endtime="20200815 21:00:48.922"></status>
+</kw>
+<msg timestamp="20200815 21:00:48.922" level="INFO">${newhref} = https://www.trivago.com/privacy-policy</msg>
+<status status="PASS" starttime="20200815 21:00:48.920" endtime="20200815 21:00:48.922"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.924" level="INFO">${newhref} = https://www.trivago.com/privacy-policy</msg>
+<status status="PASS" starttime="20200815 21:00:48.923" endtime="20200815 21:00:48.924"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:48.925" level="INFO">Creating Session using : alias=sessionName, url=https://www.trivago.com/privacy-policy, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:48.924" endtime="20200815 21:00:48.925"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:49.312" level="INFO">GET Request : url=https://www.trivago.com/privacy-policy/ 
+ path_url=/privacy-policy/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:49.313" level="INFO">GET Response : url=https://www.trivago.com/privacy-policy/ 
+ status=403, reason=Forbidden 
+ body=&lt;HTML&gt;&lt;HEAD&gt;
+&lt;TITLE&gt;Access Denied&lt;/TITLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;
+&lt;H1&gt;Access Denied&lt;/H1&gt;
+ 
+You don't have permission to access "http&amp;#58;&amp;#47;&amp;#47;www&amp;#46;trivago&amp;#46;com&amp;#47;privacy&amp;#45;policy&amp;#47;" on this server.&lt;P&gt;
+Reference&amp;#32;&amp;#35;18&amp;#46;d4b51002&amp;#46;1597514449&amp;#46;1272e61c
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+ 
+ </msg>
+<msg timestamp="20200815 21:00:49.313" level="INFO">${resp} = &lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:48.926" endtime="20200815 21:00:49.313"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:49.314" level="INFO">&lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:49.314" endtime="20200815 21:00:49.314"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:49.316" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20200815 21:00:49.316" level="FAIL">403 != 200</msg>
+<status status="FAIL" starttime="20200815 21:00:49.315" endtime="20200815 21:00:49.316"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:49.315" endtime="20200815 21:00:49.316"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:48.918" endtime="20200815 21:00:49.316"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:44.751" endtime="20200815 21:00:49.316"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:44.658" endtime="20200815 21:00:49.316"></status>
+</kw>
+<kw name="Find request result for link group" library="Common">
+<arguments>
+<arg>css= #footer-main &gt; div.container-wide &gt; div:nth-child(2) &gt; div&gt;a</arg>
+</arguments>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>${element_group}</arg>
+</arguments>
+<assign>
+<var>${element_list}</var>
+</assign>
+<msg timestamp="20200815 21:00:49.328" level="INFO">${element_list} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="c393d776b59a8039405d5e5fa6f09860", element="68c8c68e-e940-4ab9-a72d-8a5ba5d47a2c")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20200815 21:00:49.317" endtime="20200815 21:00:49.328"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>[item.get_attribute('href') for item in $element_list]</arg>
+</arguments>
+<assign>
+<var>${href_list}</var>
+</assign>
+<msg timestamp="20200815 21:00:49.352" level="INFO">${href_list} = ['https://www.facebook.com/trivagoUS/', 'https://twitter.com/trivago', 'https://www.instagram.com/trivago/', 'https://www.linkedin.com/company/trivagonv/']</msg>
+<status status="PASS" starttime="20200815 21:00:49.329" endtime="20200815 21:00:49.352"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${href_list}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:49.353" level="INFO">['https://www.facebook.com/trivagoUS/', 'https://twitter.com/trivago', 'https://www.instagram.com/trivago/', 'https://www.linkedin.com/company/trivagonv/']</msg>
+<status status="PASS" starttime="20200815 21:00:49.352" endtime="20200815 21:00:49.353"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${href_list}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20200815 21:00:49.353" level="INFO">Length is 4</msg>
+<msg timestamp="20200815 21:00:49.353" level="INFO">${length} = 4</msg>
+<status status="PASS" starttime="20200815 21:00:49.353" endtime="20200815 21:00:49.353"></status>
+</kw>
+<kw name="${j} IN RANGE [ 0 | ${length} ]" type="for">
+<kw name="${j} = 0" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:49.354" level="INFO">${asd} = /</msg>
+<status status="PASS" starttime="20200815 21:00:49.353" endtime="20200815 21:00:49.354"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:49.354" endtime="20200815 21:00:49.355"></status>
+</kw>
+<msg timestamp="20200815 21:00:49.355" level="INFO">${newhref} = https://www.facebook.com/trivagoUS</msg>
+<status status="PASS" starttime="20200815 21:00:49.354" endtime="20200815 21:00:49.355"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:49.355" level="INFO">${newhref} = https://www.facebook.com/trivagoUS</msg>
+<status status="PASS" starttime="20200815 21:00:49.355" endtime="20200815 21:00:49.355"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:49.356" level="INFO">Creating Session using : alias=sessionName, url=https://www.facebook.com/trivagoUS, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:49.355" endtime="20200815 21:00:49.356"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:50.153" level="INFO">GET Request : url=https://www.facebook.com/trivagoUS/ 
+ path_url=/trivagoUS/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:50.166" level="INFO">GET Response : url=https://www.facebook.com/trivagoUS/ 
+ status=200, reason=OK 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="tr" id="facebook" class="no_js"&gt;
+&lt;head&gt;&lt;meta charset="utf-8" /&gt;&lt;meta name="referrer" content="default" id="meta_referrer" /&gt;&lt;script nonce="dcraW0z5"&gt;window._cstart=+new Date();&lt;/script&gt;&lt;script nonce="dcraW0z5"&gt;function envFlush(a){function b(b){for(var c in a)b[c]=a[c]}window.requireLazy?window.requireLazy(["Env"],b):(window.Env=window.Env||{},b(window.Env))}envFlush({"ajaxpipe_token":"AXhW5EN7yfGWQzP8","timeslice_heartbeat_config":{"pollIntervalMs":33,"idleGapThresholdMs":60,"ignoredTimesliceNames":{"requestAnimationFrame":true,"Event listenHandler mousemove":true,"Event listenHandler mouseover":true,"Event listenHandler mouseout":true,"Event listenHandler scroll":true},"isHeartbeatEnabled":true,"isArtilleryOn":false},"shouldLogCounters":true,"timeslice_categories":{"react_render":true,"reflow":true},"sample_continuation_stacktraces":true,"dom_mutation_flag":true,"stack_trace_limit":30,"timesliceBufferSize":5000,"show_invariant_decoder":false,"compat_iframe_token":"AQ5Fwi-U3qTnig2X","isCQuick":false});&lt;/script&gt;&lt;style nonce="dcraW0z5"&gt;&lt;/style&gt;&lt;script nonce="dcraW0z5"&gt;__DEV__=0;CavalryLogger=window.CavalryLogger||function(a){this.lid=a,this.transition=!1,this.metric_collected=!1,this.is_detailed_profiler=!1,this.instrumentation_started=!1,this.pagelet_metrics={},this.events={},this.ongoing_watch={},this.values={t_cstart:window._cstart},this.piggy_values={},this.bootloader_metrics={},this.resource_to_pagelet_mapping={},this.initializeInstrumentation&amp;&amp;this.initializeInstrumentation()},CavalryLogger.prototype.setIsDetailedProfiler=function(a){this.is_detailed_profiler=a;return this},CavalryLogger.prototype.setTTIEvent=function(a){this.tti_event=a;return this},CavalryLogger.prototype.setValue=function(a,b,c,d){d=d?this.piggy_values:this.values;(typeof d[a]==="undefined"||c)&amp;&amp;(d[a]=b);return this},CavalryLogger.prototype.getLastTtiValue=function(){return this.lastTtiValue},CavalryLogger.prototype.setTimeStamp=CavalryLogger.prototype.setTimeStamp||function(a,b,c,d){this.mark(a);var e=this.values.t_cstart||this.values.t_start;e=d?e+d:CavalryLogger.now();this.setValue(a,e,b,c);this.tti_event&amp;&amp;a==this.tti_event&amp;&amp;(this.lastTtiValue=e,this.setTimeStamp("t_tti",b));return this},CavalryLogger.prototype.mark=typeof console==="object"&amp;&amp;console.timeStamp?function(a){console.timeStamp(a)}:function(){},CavalryLogger.prototype.addPiggyback=function(a,b){this.piggy_values[a]=b;return this},CavalryLogger.instances={},CavalryLogger.id=0,CavalryLogger.disableArtilleryOnUntilOffLogging=!1,CavalryLogger.getInstance=function(a){typeof a==="undefined"&amp;&amp;(a=CavalryLogger.id);CavalryLogger.instances[a]||(CavalryLogger.instances[a]=new CavalryLogger(a));return CavalryLogger.instances[a]},CavalryLogger.setPageID=function(a){if(CavalryLogger.id===0){var b=CavalryLogger.getInstance();CavalryLogger.instances[a]=b;CavalryLogger.instances[a].lid=a;delete CavalryLogger.instances[0]}CavalryLogger.id=a},CavalryLogger.now=function(){return window.performance&amp;&amp;performance.timing&amp;&amp;performance.timing.navigationStart&amp;&amp;performance.now?performance.now()+performance.timing.navigationStart:new Date().getTime()},CavalryLogger.prototype.measureResources=function(){},CavalryLogger.prototype.profileEarlyResources=function(){},CavalryLogger.getBootloaderMetricsFromAllLoggers=function(){},CavalryLogger.start_js=function(){},CavalryLogger.done_js=function(){};CavalryLogger.getInstance().setTTIEvent("t_domcontent");CavalryLogger.prototype.measureResources=function(a,b){if(!this.log_resources)return;var c="bootload/"+a.name;if(this.bootloader_metrics[c]!==void 0||this.ongoing_watch[c]!==void 0)return;var d=CavalryLogger.now();this.ongoing_watch[c]=d;"start_"+c in this.bootloader_metrics||(this.bootloader_metrics["start_"+c]=d);b&amp;&amp;!("tag_"+c in this.bootloader_metrics)&amp;&amp;(this.bootloader_metrics["tag_"+c]=b);if(a.type==="js"){c="js_exec/"+a.name;this.ongoing_watch[c]=d}},CavalryLogger.prototype.stopWatch=function(a){if(this.ongoing_watch[a]){var b=CavalryLogger.now(),c=b-this.ongoing_watch[a];this.bootloader_metrics[a]=c;var d=this.piggy_values;a.indexOf("bootload")===0&amp;&amp;(d.t_resource_download||(d.t_resource_download=0),d.resources_downloaded||(d.resources_downloaded=0),d.t_resource_download+=c,d.resources_downloaded+=1,d["tag_"+a]=="_EF_"&amp;&amp;(d.t_pagelet_cssload_early_resources=b));delete this.ongoing_watch[a]}return this},CavalryLogger.getBootloaderMetricsFromAllLoggers=function(){var a={};Object.values(window.CavalryLogger.instances).forEach(function(b){b.bootloader_metrics&amp;&amp;Object.assign(a,b.bootloader_metrics)});return a},CavalryLogger.start_js=function(a){for(var b=0;b&lt;a.length;++b)CavalryLogger.getInstance().stopWatch("js_exec/"+a[b])},CavalryLogger.done_js=function(a){for(var b=0;b&lt;a.length;++b)CavalryLogger.getInstance().stopWatch("bootload/"+a[b])},CavalryLogger.prototype.profileEarlyResources=function(a){for(var b=0;b&lt;a.length;b++)this.measureResources({name:a[b][0],type:a[b][1]?"js":""},"_EF_")};CavalryLogger.getInstance().log_resources=true;CavalryLogger.getInstance().setIsDetailedProfiler(true);window.CavalryLogger&amp;&amp;CavalryLogger.getInstance().setTimeStamp("t_start");&lt;/script&gt;&lt;noscript&gt;&lt;meta http-equiv="refresh" content="0; URL=/trivagoUS/?_fb_noscript=1" /&gt;&lt;/noscript&gt;&lt;link rel="manifest" href="/data/manifest/" crossorigin="use-credentials" /&gt;&lt;title id="pageTitle"&gt;trivago - Ana Sayfa | Facebook&lt;/title&gt;&lt;link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.facebook.com/trivagoUS/?locale2=tr_TR" /&gt;&lt;link rel="alternate" media="handheld" href="https://m.facebook.com/trivagoUS/?locale2=tr_TR" /&gt;&lt;meta property="al:android:app_name" content="Facebook" /&gt;&lt;meta property="al:android:package" content="com.facebook.katana" /&gt;&lt;meta property="al:android:url" content="fb://page/1228381697178228?referrer=app_link" /&gt;&lt;meta property="al:ios:app_name" content="Facebook" /&gt;&lt;meta property="al:ios:app_store_id" content="284882215" /&gt;&lt;meta property="al:ios:url" content="fb://page/?id=1228381697178228" /&gt;&lt;link rel="alternate" type="application/json+oembed" href="https://www.facebook.com/plugins/page/oembed.json/?url=https%3A%2F%2Fwww.facebook.com%2FtrivagoUS%2F" title="trivago" /&gt;&lt;meta name="description" content="trivago. 13&amp;#xa0;Mn be&amp;#x11f;enme. Get more out of your travel experience with trivago. Our trusted leading metasearch finds the best accommodation deals out there,..." /&gt;&lt;script type="application/ld+json" nonce="dcraW0z5"&gt;{"\u0040context":"http:\/\/schema.org","\u0040type":"LocalBusiness","name":"trivago"}&lt;/script&gt;&lt;meta property="og:title" content="trivago" /&gt;&lt;meta property="og:description" content="trivago. 13&amp;#xa0;Mn be&amp;#x11f;enme. Get more out of your travel experience with trivago. Our trusted leading metasearch finds the best accommodation deals out there, so you don&amp;#x2019;t have to. Search and compare 3M+..." /&gt;&lt;meta property="og:image" content="https://scontent.fsaw2-1.fna.fbcdn.net/v/t1.0-1/p200x200/13590355_1383572614992468_6660598191900648464_n.png?_nc_cat=100&amp;amp;_nc_sid=dbb9e7&amp;amp;_nc_ohc=JW2zZDSS77sAX_OBv0m&amp;amp;_nc_ht=scontent.fsaw2-1.fna&amp;amp;oh=4080d862b18a4fdf8d9e2ea0b6a1ca47&amp;amp;oe=5F5EC68C" /&gt;&lt;meta property="og:url" content="https://www.facebook.com/trivagoUS/" /&gt;&lt;link rel="shortcut icon" href="https://static.xx.fbcdn.net/rsrc.php/yz/r/KFyVIAWzntM.ico" /&gt;&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/y0/l/0,cross/RtDZ7W6IWtY.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="LYSIY" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/yD/l/0,cross/8RSeYo2eLFa.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="h6mcW" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/yT/l/0,cross/KBMLZFfih1H.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="dnzDL" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/yg/l/0,cross/lnJk5PxZJW9.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="7gkG2" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/yR/l/0,cross/J7OxEdfPLp_.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="UJDBN" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/yy/l/0,cross/JbUTfAMjS5x.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="ymV2d" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/y4/l/0,cross/LazR0UqDqHP.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="huVML" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/y9/l/0,cross/uI9Jojt3u9L.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="a6a90" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/y3/l/0,cross/sBAq4H_A__I.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="f9Zyj" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/yt/l/0,cross/mEpZ286KnzN.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="GO0Az" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="data:text/css; charset=utf-8;base64,I2Jvb3Rsb2FkZXJfUF9tcjV7aGVpZ2h0OjQycHg7fS5ib290bG9hZGVyX1BfbXI1e2Rpc3BsYXk6YmxvY2shaW1wb3J0YW50O30=" data-bootloader-hash="P/mr5" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/y2/l/0,cross/fEgqzsIJSlX.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="oAM53" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/l/0,cross/ELgkON9t70B.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="etlQ4" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/ye/l/0,cross/xONPpo0Yo9h.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="Ze/C9" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v3/yS/l/0,cross/yM-LtDwOVg_.css?_nc_x=Ij3Wp8lg5Kz" data-bootloader-hash="JXHde" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="data:text/css; charset=utf-8;base64,LnRfYzNweW8ybjdpIGF7Y29sb3I6Izk5OX0ueV9jM3B5bzFxbjV7Y29sb3I6IzYxNjc3MH1hLnRfYzNweW8ybjdpLmNf... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20200815 21:00:50.167" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:49.356" endtime="20200815 21:00:50.167"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:50.168" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:50.167" endtime="20200815 21:00:50.168"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:50.169" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:50.168" endtime="20200815 21:00:50.169"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:50.168" endtime="20200815 21:00:50.169"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:49.353" endtime="20200815 21:00:50.169"></status>
+</kw>
+<kw name="${j} = 1" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:50.170" level="INFO">${asd} = o</msg>
+<status status="PASS" starttime="20200815 21:00:50.170" endtime="20200815 21:00:50.171"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Line" library="String">
+<doc>Returns the specified line from the given ``string``.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:50.172" endtime="20200815 21:00:50.172"></status>
+</kw>
+<msg timestamp="20200815 21:00:50.172" level="INFO">${newhref} = https://twitter.com/trivago</msg>
+<status status="PASS" starttime="20200815 21:00:50.171" endtime="20200815 21:00:50.172"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:50.173" level="INFO">${newhref} = https://twitter.com/trivago</msg>
+<status status="PASS" starttime="20200815 21:00:50.172" endtime="20200815 21:00:50.173"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:50.174" level="INFO">Creating Session using : alias=sessionName, url=https://twitter.com/trivago, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:50.173" endtime="20200815 21:00:50.174"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:51.792" level="INFO">GET Request : url=https://twitter.com/trivago/ 
+ path_url=/trivago/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:51.793" level="INFO">GET Response : url=https://twitter.com/trivago/ 
+ status=200, reason=OK 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html dir="ltr" lang="en"&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover" /&gt;
+&lt;link rel="preconnect" href="//abs.twimg.com" /&gt;
+&lt;link rel="preconnect" href="//api.twitter.com" /&gt;
+&lt;link rel="preconnect" href="//pbs.twimg.com" /&gt;
+&lt;link rel="preconnect" href="//t.co" /&gt;
+&lt;link rel="preconnect" href="//video.twimg.com" /&gt;
+&lt;link rel="dns-prefetch" href="//abs.twimg.com" /&gt;
+&lt;link rel="dns-prefetch" href="//api.twitter.com" /&gt;
+&lt;link rel="dns-prefetch" href="//pbs.twimg.com" /&gt;
+&lt;link rel="dns-prefetch" href="//t.co" /&gt;
+&lt;link rel="dns-prefetch" href="//video.twimg.com" /&gt;
+&lt;link rel="preload" as="script" crossorigin="anonymous" href="https://abs.twimg.com/responsive-web/client-web-legacy/polyfills.b0114665.js" nonce="YjU5MjE5MTAtMGY4Yy00YmUwLTkzNTYtZjIzNzkyODgzMzBk" /&gt;
+&lt;link rel="preload" as="script" crossorigin="anonymous" href="https://abs.twimg.com/responsive-web/client-web-legacy/vendors~main.5f094565.js" nonce="YjU5MjE5MTAtMGY4Yy00YmUwLTkzNTYtZjIzNzkyODgzMzBk" /&gt;
+&lt;link rel="preload" as="script" crossorigin="anonymous" href="https://abs.twimg.com/responsive-web/client-web-legacy/i18n/en.4ca1fd95.js" nonce="YjU5MjE5MTAtMGY4Yy00YmUwLTkzNTYtZjIzNzkyODgzMzBk" /&gt;
+&lt;link rel="preload" as="script" crossorigin="anonymous" href="https://abs.twimg.com/responsive-web/client-web-legacy/main.0b7b22c5.js" nonce="YjU5MjE5MTAtMGY4Yy00YmUwLTkzNTYtZjIzNzkyODgzMzBk" /&gt;
+&lt;meta property="fb:app_id" content="2231777543" /&gt;
+&lt;meta property="og:site_name" content="Twitter" /&gt;
+&lt;meta name="google-site-verification" content="V0yIS0Ec_o3Ii9KThrCoMCkwTYMMJ_JYx_RSaGhFYvw" /&gt;
+&lt;link rel="manifest" href="/manifest.json" crossOrigin="use-credentials" /&gt;
+&lt;link rel="alternate" hreflang="x-default" href="https://twitter.com/trivago/?lang&amp;#x3D;en" /&gt;
+&lt;link rel="alternate" hreflang="ar" href="https://twitter.com/trivago/?lang&amp;#x3D;ar" /&gt;
+&lt;link rel="alternate" hreflang="bg" href="https://twitter.com/trivago/?lang&amp;#x3D;bg" /&gt;
+&lt;link rel="alternate" hreflang="bn" href="https://twitter.com/trivago/?lang&amp;#x3D;bn" /&gt;
+&lt;link rel="alternate" hreflang="ca" href="https://twitter.com/trivago/?lang&amp;#x3D;ca" /&gt;
+&lt;link rel="alternate" hreflang="cs" href="https://twitter.com/trivago/?lang&amp;#x3D;cs" /&gt;
+&lt;link rel="alternate" hreflang="da" href="https://twitter.com/trivago/?lang&amp;#x3D;da" /&gt;
+&lt;link rel="alternate" hreflang="de" href="https://twitter.com/trivago/?lang&amp;#x3D;de" /&gt;
+&lt;link rel="alternate" hreflang="el" href="https://twitter.com/trivago/?lang&amp;#x3D;el" /&gt;
+&lt;link rel="alternate" hreflang="en" href="https://twitter.com/trivago/?lang&amp;#x3D;en" /&gt;
+&lt;link rel="alternate" hreflang="en-GB" href="https://twitter.com/trivago/?lang&amp;#x3D;en-GB" /&gt;
+&lt;link rel="alternate" hreflang="es" href="https://twitter.com/trivago/?lang&amp;#x3D;es" /&gt;
+&lt;link rel="alternate" hreflang="eu" href="https://twitter.com/trivago/?lang&amp;#x3D;eu" /&gt;
+&lt;link rel="alternate" hreflang="fa" href="https://twitter.com/trivago/?lang&amp;#x3D;fa" /&gt;
+&lt;link rel="alternate" hreflang="fi" href="https://twitter.com/trivago/?lang&amp;#x3D;fi" /&gt;
+&lt;link rel="alternate" hreflang="tl" href="https://twitter.com/trivago/?lang&amp;#x3D;tl" /&gt;
+&lt;link rel="alternate" hreflang="fr" href="https://twitter.com/trivago/?lang&amp;#x3D;fr" /&gt;
+&lt;link rel="alternate" hreflang="ga" href="https://twitter.com/trivago/?lang&amp;#x3D;ga" /&gt;
+&lt;link rel="alternate" hreflang="gl" href="https://twitter.com/trivago/?lang&amp;#x3D;gl" /&gt;
+&lt;link rel="alternate" hreflang="gu" href="https://twitter.com/trivago/?lang&amp;#x3D;gu" /&gt;
+&lt;link rel="alternate" hreflang="he" href="https://twitter.com/trivago/?lang&amp;#x3D;he" /&gt;
+&lt;link rel="alternate" hreflang="hi" href="https://twitter.com/trivago/?lang&amp;#x3D;hi" /&gt;
+&lt;link rel="alternate" hreflang="hr" href="https://twitter.com/trivago/?lang&amp;#x3D;hr" /&gt;
+&lt;link rel="alternate" hreflang="hu" href="https://twitter.com/trivago/?lang&amp;#x3D;hu" /&gt;
+&lt;link rel="alternate" hreflang="id" href="https://twitter.com/trivago/?lang&amp;#x3D;id" /&gt;
+&lt;link rel="alternate" hreflang="it" href="https://twitter.com/trivago/?lang&amp;#x3D;it" /&gt;
+&lt;link rel="alternate" hreflang="ja" href="https://twitter.com/trivago/?lang&amp;#x3D;ja" /&gt;
+&lt;link rel="alternate" hreflang="kn" href="https://twitter.com/trivago/?lang&amp;#x3D;kn" /&gt;
+&lt;link rel="alternate" hreflang="ko" href="https://twitter.com/trivago/?lang&amp;#x3D;ko" /&gt;
+&lt;link rel="alternate" hreflang="mr" href="https://twitter.com/trivago/?lang&amp;#x3D;mr" /&gt;
+&lt;link rel="alternate" hreflang="ms" href="https://twitter.com/trivago/?lang&amp;#x3D;ms" /&gt;
+&lt;link rel="alternate" hreflang="nb" href="https://twitter.com/trivago/?lang&amp;#x3D;nb" /&gt;
+&lt;link rel="alternate" hreflang="nl" href="https://twitter.com/trivago/?lang&amp;#x3D;nl" /&gt;
+&lt;link rel="alternate" hreflang="pl" href="https://twitter.com/trivago/?lang&amp;#x3D;pl" /&gt;
+&lt;link rel="alternate" hreflang="pt" href="https://twitter.com/trivago/?lang&amp;#x3D;pt" /&gt;
+&lt;link rel="alternate" hreflang="ro" href="https://twitter.com/trivago/?lang&amp;#x3D;ro" /&gt;
+&lt;link rel="alternate" hreflang="ru" href="https://twitter.com/trivago/?lang&amp;#x3D;ru" /&gt;
+&lt;link rel="alternate" hreflang="sk" href="https://twitter.com/trivago/?lang&amp;#x3D;sk" /&gt;
+&lt;link rel="alternate" hreflang="sr" href="https://twitter.com/trivago/?lang&amp;#x3D;sr" /&gt;
+&lt;link rel="alternate" hreflang="sv" href="https://twitter.com/trivago/?lang&amp;#x3D;sv" /&gt;
+&lt;link rel="alternate" hreflang="ta" href="https://twitter.com/trivago/?lang&amp;#x3D;ta" /&gt;
+&lt;link rel="alternate" hreflang="th" href="https://twitter.com/trivago/?lang&amp;#x3D;th" /&gt;
+&lt;link rel="alternate" hreflang="tr" href="https://twitter.com/trivago/?lang&amp;#x3D;tr" /&gt;
+&lt;link rel="alternate" hreflang="uk" href="https://twitter.com/trivago/?lang&amp;#x3D;uk" /&gt;
+&lt;link rel="alternate" hreflang="ur" href="https://twitter.com/trivago/?lang&amp;#x3D;ur" /&gt;
+&lt;link rel="alternate" hreflang="vi" href="https://twitter.com/trivago/?lang&amp;#x3D;vi" /&gt;
+&lt;link rel="alternate" hreflang="zh" href="https://twitter.com/trivago/?lang&amp;#x3D;zh" /&gt;
+&lt;link rel="alternate" hreflang="zh-Hant" href="https://twitter.com/trivago/?lang&amp;#x3D;zh-Hant" /&gt;
+&lt;link rel="canonical" href="https://twitter.com/trivago/" data-rdm /&gt;
+&lt;link rel="mask-icon" sizes="any" href="https://abs.twimg.com/responsive-web/client-web-legacy/icon-svg.9e211f65.svg" color="#1da1f2"&gt;
+&lt;link rel="shortcut icon" href="//abs.twimg.com/favicons/twitter.ico" type="image/x-icon"&gt;
+&lt;link rel="apple-touch-icon" sizes="192x192" href="https://abs.twimg.com/responsive-web/client-web-legacy/icon-ios.8ea219d5.png" /&gt;
+&lt;meta name="mobile-web-app-capable" content="yes" /&gt;
+&lt;meta name="apple-mobile-web-app-title" content="Twitter" /&gt;
+&lt;meta name="apple-mobile-web-app-status-bar-style" content="white" /&gt;
+&lt;meta name="theme-color" content="#ffffff" /&gt;
+&lt;meta http-equiv="origin-trial" content="Ap6SMBNB0lQoXpXl4I9vyTJqJ7Y0X9tPd6Q6rN697iHdubQQxBcWHy21N3N7uEz7Ba5UKMbN+eLvDczBSbi27AsAAABfeyJvcmlnaW4iOiJodHRwczovL3R3aXR0ZXIuY29tOjQ0MyIsImZlYXR1cmUiOiJCYWRnaW5nIiwiZXhwaXJ5IjoxNTY0NTgyNzY2LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=" /&gt;
+&lt;meta http-equiv="origin-trial" content="Apir4chqTX+4eFxKD+ErQlKRB/VtZ/dvnLfd9Y9Nenl5r1xJcf81alryTHYQiuUlz9Q49MqGXqyaiSmqWzHUqQwAAABneyJvcmlnaW4iOiJodHRwczovL3R3aXR0ZXIuY29tOjQ0MyIsImZlYXR1cmUiOiJDb250YWN0c01hbmFnZXIiLCJleHBpcnkiOjE1NzUwMzUyODMsImlzU3ViZG9tYWluIjp0cnVlfQ==" /&gt;
+&lt;meta http-equiv="origin-trial" content="AleGS26SZL7UA8Fe1DbvXzoay74bPTvrfKKGimIu1RI8vA+RtXOSVlizUkz2zU/fQoFoOTgCiCciP6pM5teaeQgAAABjeyJvcmlnaW4iOiJodHRwczovL3R3aXR0ZXIuY29tOjQ0MyIsImZlYXR1cmUiOiJTbXNSZWNlaXZlciIsImV4cGlyeSI6MTU3OTAyMDkyMSwiaXNTdWJkb21haW4iOnRydWV9" /&gt;
+
+&lt;style&gt;html,body{height: 100%;}body{-ms-overflow-style:scrollbar;overflow-y:scroll;overscroll-behavior-y:none;}&lt;/style&gt;
+&lt;style id="react-native-stylesheet"&gt;[stylesheet-group="0"]{}
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+body{margin:0;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+input::-webkit-inner-spin-button,input::-webkit-outer-spin-button,input::-webkit-search-cancel-button,input::-webkit-search-decoration,input::-webkit-search-results-button,input::-webkit-search-results-decoration{display:none;}
+[stylesheet-group="0.1"]{}
+:focus:not([data-focusvisible-polyfill]){outline: none;}
+[stylesheet-group="1"]{}
+.css-1dbjc4n{-ms-flex-align:stretch;-ms-flex-direction:column;-ms-flex-negative:0;-ms-flex-preferred-size:auto;-webkit-align-items:stretch;-webkit-box-align:stretch;-webkit-box-direction:normal;-webkit-box-orient:vertical;-webkit-flex-basis:auto;-webkit-flex-direction:column;-webkit-flex-shrink:0;align-items:stretch;border:0 solid black;box-sizing:border-box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;flex-basis:auto;flex-direction:column;flex-shrink:0;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;min-height:0px;min-width:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;position:relative;z-index:0;}
+.css-901oao{border:0 solid black;box-sizing:border-box;color:rgba(0,0,0,1.00);display:inline;font:14px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;margin-bottom:0px;margin-left:0px;margin-right:0px;margin-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;white-space:pre-wrap;word-wrap:break-word;}
+.css-16my406{color:inherit;font:inherit;white-space:inherit;}
+[stylesheet-group="2"]{}
+.r-13awgt0{-ms-flex-negative:1;-ms-flex-positive:1;-ms-flex-preferred-size:0%;-webkit-box-flex:1;-webkit-flex-basis:0%;-webkit-flex-grow:1;-webkit-flex-shrink:1;flex-basis:0%;flex-grow:1;flex-shrink:1;}
+.r-4qtqp9{display:inline-block;}
+.r-ywje51{margin-bottom:auto;margin-left:auto;margin-right:auto;margin-top:auto;}
+.r-hvic4v{display:none;}
+.r-1adg3ll{display:block;}
+[stylesheet-group="2.2"]{}
+.r-12vffkv&gt;*{pointer-events:auto;}
+.r-12vffkv{pointer-events:none!important;}
+.r-14lw9ot{background-color:rgba(255,255,255,1.00);}
+.r-1p0dtai{bottom:0px;}
+.r-1d2f490{left:0px;}
+.r-1xcajam{position:fixed;}
+.r-zchlnj{right:0px;}
+.r-ipm5af{top:0px;}
+.r-yyyyoo{fill... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20200815 21:00:51.794" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:50.174" endtime="20200815 21:00:51.794"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:51.795" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:51.795" endtime="20200815 21:00:51.796"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:51.797" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:51.797" endtime="20200815 21:00:51.797"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:51.796" endtime="20200815 21:00:51.797"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:50.169" endtime="20200815 21:00:51.797"></status>
+</kw>
+<kw name="${j} = 2" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:51.797" level="INFO">${asd} = /</msg>
+<status status="PASS" starttime="20200815 21:00:51.797" endtime="20200815 21:00:51.798"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:51.798" endtime="20200815 21:00:51.798"></status>
+</kw>
+<msg timestamp="20200815 21:00:51.798" level="INFO">${newhref} = https://www.instagram.com/trivago</msg>
+<status status="PASS" starttime="20200815 21:00:51.798" endtime="20200815 21:00:51.798"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:51.799" level="INFO">${newhref} = https://www.instagram.com/trivago</msg>
+<status status="PASS" starttime="20200815 21:00:51.798" endtime="20200815 21:00:51.799"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:51.799" level="INFO">Creating Session using : alias=sessionName, url=https://www.instagram.com/trivago, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:51.799" endtime="20200815 21:00:51.799"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:53.194" level="INFO">GET Request : url=https://www.instagram.com/trivago/ 
+ path_url=/trivago/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:53.195" level="INFO">GET Response : url=https://www.instagram.com/trivago/ 
+ status=200, reason=OK 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en" class="no-js not-logged-in client-root"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+
+        &lt;title&gt;
+@trivago • Instagram photos and videos
+&lt;/title&gt;
+
+        
+        &lt;meta name="robots" content="noimageindex, noarchive"&gt;
+        &lt;meta name="apple-mobile-web-app-status-bar-style" content="default"&gt;
+        &lt;meta name="mobile-web-app-capable" content="yes"&gt;
+        &lt;meta name="theme-color" content="#ffffff"&gt;
+        &lt;meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"&gt;
+        &lt;link rel="manifest" href="/data/manifest.json"&gt;
+
+        &lt;link rel="preload" href="/static/bundles/metro/ConsumerUICommons.css/fe572fc667cc.css" as="style" type="text/css" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/Consumer.css/e5e326c746ac.css" as="style" type="text/css" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/ProfilePageContainer.css/9e4e34ef2e22.css" as="style" type="text/css" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/Vendor.js/5a56d51ae30f.js" as="script" type="text/javascript" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/en_US.js/1d48e7514fff.js" as="script" type="text/javascript" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/ConsumerLibCommons.js/ee3d36a43b0d.js" as="script" type="text/javascript" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/ConsumerUICommons.js/d2e6557ed9bb.js" as="script" type="text/javascript" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/ConsumerAsyncCommons.js/ee398168663c.js" as="script" type="text/javascript" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/Consumer.js/db05911cfc10.js" as="script" type="text/javascript" crossorigin="anonymous" /&gt;
+&lt;link rel="preload" href="/static/bundles/metro/ProfilePageContainer.js/f5cf54d9313c.js" as="script" type="text/javascript" crossorigin="anonymous" /&gt;
+        
+        
+
+        &lt;script type="text/javascript"&gt;
+        (function() {
+  var docElement = document.documentElement;
+  var classRE = new RegExp('(^|\\s)no-js(\\s|$)');
+  var className = docElement.className;
+  docElement.className = className.replace(classRE, '$1js$2');
+})();
+&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+(function() {
+  if ('PerformanceObserver' in window &amp;&amp; 'PerformancePaintTiming' in window) {
+    window.__bufferedPerformance = [];
+    var ob = new PerformanceObserver(function(e) {
+      window.__bufferedPerformance.push.apply(window.__bufferedPerformance,e.getEntries());
+    });
+    ob.observe({entryTypes:['paint']});
+  }
+
+  window.__bufferedErrors = [];
+  window.onerror = function(message, url, line, column, error) {
+    window.__bufferedErrors.push({
+      message: message,
+      url: url,
+      line: line,
+      column: column,
+      error: error
+    });
+    return false;
+  };
+  window.__initialData = {
+    pending: true,
+    waiting: []
+  };
+  function asyncFetchSharedData(extra) {
+    var sharedDataReq = new XMLHttpRequest();
+    sharedDataReq.onreadystatechange = function() {
+          if (sharedDataReq.readyState === 4) {
+            if(sharedDataReq.status === 200){
+              var sharedData = JSON.parse(sharedDataReq.responseText);
+              window.__initialDataLoaded(sharedData, extra);
+            }
+          }
+        }
+    sharedDataReq.open('GET', '/data/shared_data/', true);
+    sharedDataReq.send(null);
+  }
+  function notifyLoaded(item, data) {
+    item.pending = false;
+    item.data = data;
+    for (var i = 0;i &lt; item.waiting.length; ++i) {
+      item.waiting[i].resolve(item.data);
+    }
+    item.waiting = [];
+  }
+  function notifyError(item, msg) {
+    item.pending = false;
+    item.error = new Error(msg);
+    for (var i = 0;i &lt; item.waiting.length; ++i) {
+      item.waiting[i].reject(item.error);
+    }
+    item.waiting = [];
+  }
+  window.__initialDataLoaded = function(initialData, extraData) {
+    if (extraData) {
+      for (var key in extraData) {
+        initialData[key] = extraData[key];
+      }
+    }
+    notifyLoaded(window.__initialData, initialData);
+  };
+  window.__initialDataError = function(msg) {
+    notifyError(window.__initialData, msg);
+  };
+  window.__additionalData = {};
+  window.__pendingAdditionalData = function(paths) {
+    for (var i = 0;i &lt; paths.length; ++i) {
+      window.__additionalData[paths[i]] = {
+        pending: true,
+        waiting: []
+      };
+    }
+  };
+  window.__additionalDataLoaded = function(path, data) {
+    if (path in window.__additionalData) {
+      notifyLoaded(window.__additionalData[path], data);
+    } else {
+      console.error('Unexpected additional data loaded "' + path + '"');
+    }
+  };
+  window.__additionalDataError = function(path, msg) {
+    if (path in window.__additionalData) {
+      notifyError(window.__additionalData[path], msg);
+    } else {
+      console.error('Unexpected additional data encountered an error "' + path + '": ' + msg);
+    }
+  };
+  
+})();
+&lt;/script&gt;&lt;script type="text/javascript"&gt;
+
+/*
+ Copyright 2018 Google Inc. All Rights Reserved.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+
+(function(){function g(a,c){b||(b=a,f=c,h.forEach(function(a){removeEventListener(a,l,e)}),m())}function m(){b&amp;&amp;f&amp;&amp;0&lt;d.length&amp;&amp;(d.forEach(function(a){a(b,f)}),d=[])}function n(a,c){function k(){g(a,c);d()}function b(){d()}function d(){removeEventListener("pointerup",k,e);removeEventListener("pointercancel",b,e)}addEventListener("pointerup",k,e);addEventListener("pointercancel",b,e)}function l(a){if(a.cancelable){var c=performance.now(),b=a.timeStamp;b&gt;c&amp;&amp;(c=+new Date);c-=b;"pointerdown"==a.type?n(c,
+a):g(c,a)}}var e={passive:!0,capture:!0},h=["click","mousedown","keydown","touchstart","pointerdown"],b,f,d=[];h.forEach(function(a){addEventListener(a,l,e)});window.perfMetrics=window.perfMetrics||{};window.perfMetrics.onFirstInputDelay=function(a){d.push(a);m()}})();
+&lt;/script&gt;
+    
+                &lt;link rel="apple-touch-icon-precomposed" sizes="76x76" href="/static/images/ico/apple-touch-icon-76x76-precomposed.png/666282be8229.png"&gt;
+                &lt;link rel="apple-touch-icon-precomposed" sizes="120x120" href="/static/images/ico/apple-touch-icon-120x120-precomposed.png/8a5bd3f267b1.png"&gt;
+                &lt;link rel="apple-touch-icon-precomposed" sizes="152x152" href="/static/images/ico/apple-touch-icon-152x152-precomposed.png/68193576ffc5.png"&gt;
+                &lt;link rel="apple-touch-icon-precomposed" sizes="167x167" href="/static/images/ico/apple-touch-icon-167x167-precomposed.png/4985e31c9100.png"&gt;
+                &lt;link rel="apple-touch-icon-precomposed" sizes="180x180" href="/static/images/ico/apple-touch-icon-180x180-precomposed.png/c06fdb2357bd.png"&gt;
+                
+                    &lt;link rel="icon" sizes="192x192" href="/static/images/ico/favicon-192.png/68d99ba29cc8.png"&gt;
+                
+            
+            
+                    &lt;link rel="mask-icon" href="/static/images/ico/favicon.svg/fc72dd4bfde8.svg" color="#262626"&gt;
+                  
+                  &lt;link rel="shortcut icon" type="image/x-icon" href="/static/images/ico/favicon.ico/36b3ee2d91ed.ico"&gt;
+                
+            
+            
+            
+    
+            
+            &lt;link rel="alternate" href="android-app://com.instagram.android/https/instagram.com/_u/trivago/" /&gt;
+        
+            
+            &lt;meta property="al:ios:app_name" content="Instagram" /&gt;
+            &lt;meta property="al:ios:app_store_id" content="389801252" /&gt;
+            &lt;meta property="al:ios:url" content="instagram://user?username=trivago" /&gt;
+            &lt;meta property="al:android:app_name" content="Instagram" /&gt;
+            &lt;meta property="al:android:package" content="com.instagram.android" /&gt;
+            &lt;meta property="al:android:url" content="https://www.instagram.com/_u/trivago/" /&gt;
+        
+            &lt;link rel="canonical" href="https://www.instagram.com/trivago/" /&gt;
+            &lt;meta content="625.8k Followers, 398 Following, 995 Posts - See Instagram photos and videos from @trivago" name="description" /&gt;
+            
+            &lt;meta property="og:type" content="profile" /&gt;
+            &lt;meta property="og:image" content="https://instagram.fsaw2-1.fna.fbcdn.net/v/t51.2885-19/s150x150/13584040_1750776881835686_1173755820_a.jpg?_nc_ht=instagram.fsaw2-1.fna.fbcdn.net&amp;_nc_ohc=mAm9tarUXuYAX_BNoCU&amp;oh=4e7bdf9ddd5d60d90b3b11ee1acc1dd3&amp;oe=5F632895" /&gt;
+            &lt;meta property="og:title" content="@trivago • Instagram photos and videos" /&gt;
+            &lt;meta property="og:description" content="625.8k Followers, 398 Following, 995 Posts - See Instagram photos and videos from @trivago" /&gt;
+            &lt;meta property="og:url" content="https://www.instagram.com/trivago/" /&gt;
+        
+        
+
+            &lt;script type="application/ld+json"&gt;
+                {"@context":"http:\/\/schema.org","@type":"Store","name":"trivago","alternateName":"@trivago","description":"When you\u2019re ready to travel again, take your first step on trivago. Compare hotels, apartments, vacation rentals and more on our meta-search platform.","url":"http:\/\/trv.to\/linkinbio","mainEntityofPage":{"@type":"ProfilePage","@id":"https:\/\/www.instagram.com\/trivago\/","interactionStatistic":{"@type":"InteractionCounter","interactionType":"http:\/\/schema.org\/FollowAction","userInteractionCount":"625843"}},"imag... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20200815 21:00:53.195" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:51.799" endtime="20200815 21:00:53.195"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:53.196" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:53.195" endtime="20200815 21:00:53.196"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:53.196" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:53.196" endtime="20200815 21:00:53.197"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:53.196" endtime="20200815 21:00:53.197"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:51.797" endtime="20200815 21:00:53.197"></status>
+</kw>
+<kw name="${j} = 3" type="foritem">
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>-1</arg>
+</arguments>
+<assign>
+<var>${asd}</var>
+</assign>
+<msg timestamp="20200815 21:00:53.197" level="INFO">${asd} = /</msg>
+<status status="PASS" starttime="20200815 21:00:53.197" endtime="20200815 21:00:53.197"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${asd}' == '/'</arg>
+<arg>Get Substring</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+<arg>ELSE</arg>
+<arg>Get Line</arg>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${newhref}</var>
+</assign>
+<kw name="Get Substring" library="String">
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<arguments>
+<arg>${href_list[${j}]}</arg>
+<arg>0</arg>
+<arg>-1</arg>
+</arguments>
+<status status="PASS" starttime="20200815 21:00:53.198" endtime="20200815 21:00:53.198"></status>
+</kw>
+<msg timestamp="20200815 21:00:53.198" level="INFO">${newhref} = https://www.linkedin.com/company/trivagonv</msg>
+<status status="PASS" starttime="20200815 21:00:53.197" endtime="20200815 21:00:53.198"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${newhref}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:53.199" level="INFO">${newhref} = https://www.linkedin.com/company/trivagonv</msg>
+<status status="PASS" starttime="20200815 21:00:53.199" endtime="20200815 21:00:53.199"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>${newhref}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200815 21:00:53.199" level="INFO">Creating Session using : alias=sessionName, url=https://www.linkedin.com/company/trivagonv, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200815 21:00:53.199" endtime="20200815 21:00:53.200"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>sessionName</arg>
+<arg>/</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200815 21:00:53.603" level="INFO">GET Request : url=https://www.linkedin.com/company/trivagonv/ 
+ path_url=/company/trivagonv/ 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200815 21:00:53.603" level="INFO">GET Response : url=https://www.linkedin.com/company/trivagonv/ 
+ status=999, reason=Request denied 
+ body=&lt;html&gt;&lt;head&gt;
+&lt;script type="text/javascript"&gt;
+window.onload = function() {
+  // Parse the tracking code from cookies.
+  var trk = "bf";
+  var trkInfo = "bf";
+  var cookies = document.cookie.split("; ");
+  for (var i = 0; i &lt; cookies.length; ++i) {
+    if ((cookies[i].indexOf("trkCode=") == 0) &amp;&amp; (cookies[i].length &gt; 8)) {
+      trk = cookies[i].substring(8);
+    }
+    else if ((cookies[i].indexOf("trkInfo=") == 0) &amp;&amp; (cookies[i].length &gt; 8)) {
+      trkInfo = cookies[i].substring(8);
+    }
+  }
+
+  if (window.location.protocol == "http:") {
+    // If "sl" cookie is set, redirect to https.
+    for (var i = 0; i &lt; cookies.length; ++i) {
+      if ((cookies[i].indexOf("sl=") == 0) &amp;&amp; (cookies[i].length &gt; 3)) {
+        window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+        return;
+      }
+    }
+  }
+
+  // Get the new domain. For international domains such as
+  // fr.linkedin.com, we convert it to www.linkedin.com
+  var domain = "www.linkedin.com";
+  if (domain != location.host) {
+    var subdomainIndex = location.host.indexOf(".linkedin");
+    if (subdomainIndex != -1) {
+      domain = "www" + location.host.substring(subdomainIndex);
+    }
+  }
+
+  window.location.href = "https://" + domain + "/authwall?trk=" + trk + "&amp;trkInfo=" + trkInfo +
+      "&amp;originalReferer=" + document.referrer.substr(0, 200) +
+      "&amp;sessionRedirect=" + encodeURIComponent(window.location.href);
+}
+&lt;/script&gt;
+&lt;/head&gt;&lt;/html&gt; 
+ </msg>
+<msg timestamp="20200815 21:00:53.603" level="INFO">${resp} = &lt;Response [999]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:53.200" endtime="20200815 21:00:53.603"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20200815 21:00:53.604" level="INFO">&lt;Response [999]&gt;</msg>
+<status status="PASS" starttime="20200815 21:00:53.604" endtime="20200815 21:00:53.605"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Should Be Equal As Strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200815 21:00:53.605" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20200815 21:00:53.605" level="FAIL">999 != 200</msg>
+<status status="FAIL" starttime="20200815 21:00:53.605" endtime="20200815 21:00:53.605"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:53.605" endtime="20200815 21:00:53.605"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:53.197" endtime="20200815 21:00:53.605"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:49.353" endtime="20200815 21:00:53.605"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:49.316" endtime="20200815 21:00:53.605"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:44.658" endtime="20200815 21:00:53.606"></status>
+</kw>
+<kw name="End Web Test" library="Common" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200815 21:00:53.607" endtime="20200815 21:00:55.761"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:53.606" endtime="20200815 21:00:55.762"></status>
+</kw>
+<status status="PASS" starttime="20200815 21:00:35.541" endtime="20200815 21:00:55.763" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200815 20:59:25.323" endtime="20200815 21:00:55.769"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0">Critical Tests</stat>
+<stat pass="5" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="0" id="s1" name="Smoke">Smoke</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
